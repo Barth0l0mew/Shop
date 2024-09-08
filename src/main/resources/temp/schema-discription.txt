@@ -1,0 +1,63 @@
+### Сущности
+1. **Baskets**
+- **id** (PK)
+- **user_id** (FK -> Users)
+
+2. **Baskets_Products**
+- **basket_id** (FK -> Baskets)
+- **product_id** (FK -> Products)
+
+3. **Categories**
+- **id** (PK)
+- **title**
+
+4. **Order_Details**
+- **id** (PK)
+- **amount**
+- **price**
+- **order_id** (FK -> Orders)
+- **product_id** (FK -> Products)
+
+5. **Orders**
+- **id** (PK)
+- **address**
+- **created**
+- **status**
+- **sum**
+- **update**
+- **user_id** (FK -> Users)
+
+6. **Orders_Details**
+- **order_id** (FK -> Orders)
+- **details_id** (FK -> Order_Details)
+
+7. **Products**
+- **id** (PK)
+- **description**
+- **price**
+- **title**
+
+8. **Products_Categories**
+- **product_id** (FK -> Products)
+- **category_id** (FK -> Categories)
+
+9. **Users**
+- **id** (PK)
+- **archive**
+- **email**
+- **password**
+- **role**
+- **username**
+- **basket_id** (FK -> Baskets)
+
+### Связи
+- **Baskets** ↔ **Users**: Один пользователь может иметь один кошелек (one-to-one).
+- **Baskets** ↔ **Baskets_Products**: Один кошелек может содержать много продуктов (one-to-many).
+- **Products** ↔ **Baskets_Products**: Один продукт может находиться в многих кошельках (one-to-many).
+- **Categories** ↔ **Products_Categories**: Один продукт может принадлежать многим категориям (many-to-many).
+- **Products** ↔ **Products_Categories**: Одна категория может содержать много продуктов (one-to-many).
+- **Orders** ↔ **Users**: Один пользователь может иметь много заказов (one-to-many).
+- **Orders** ↔ **Order_Details**: Один заказ может содержать много деталей заказа (one-to-many).
+- **Order_Details** ↔ **Products**: Один продукт может быть в многих деталях заказа (one-to-many).
+- **Orders_Details** ↔ **Orders**: Один заказ может иметь много деталей (one-to-many).
+- **Orders_Details** ↔ **Order_Details**: Одна деталь заказа может встречаться в нескольких деталях заказа (one-to-many).
