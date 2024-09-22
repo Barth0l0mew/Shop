@@ -1,0 +1,51 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UserList</title>
+</head>
+<body>
+    <div th:fragment="userlist(users)" >
+        <h2>Список пользователей</h2>
+        <a class="newUser" href="/admin/addUser"><h5>Создать нового пользователя</h5></a>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Имя пользователя</th>
+                <th>Электронная почта</th>
+                <th>Пароль</th>
+                <th>Архив</th>
+                <th>Роль</th>
+                <th>Править</th>
+                <th>Удалить</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.password}"></td>
+                <td th:text="${user.archive}"></td>
+                <td th:text="${user.role}"></td>
+                <td>
+                    <form th:action="@{/admin/editUser(id=${user.id})}" method="post">
+                        <button class="btn btn-primary" type="submit">Править</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" th:action="@{/admin/deleteUser(id=${user.id})}">
+                        <button class="btn btn-danger" type="submit">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

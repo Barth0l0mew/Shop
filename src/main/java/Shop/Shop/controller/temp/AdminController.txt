@@ -1,0 +1,55 @@
+package Shop.Shop.controller.temp;
+
+import Shop.Shop.model.User;
+import Shop.Shop.service.MyUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+@RequestMapping("/admin")
+public class AdminController {
+    @Autowired
+    private MyUserService myUserService;
+    @GetMapping({"","/","index"})
+    public String indexAdmin() {
+        return "admin/index.html";
+    }
+    @GetMapping("/users")
+    public String showIndex (@RequestParam(value = "menuselect", defaultValue = "users") String menuselect, Model model){
+        System.out.println("===="+menuselect);
+        if (menuselect.equals("users")){
+            model.addAttribute("menuselect",menuselect);
+            model.addAttribute("users", myUserService.findAll());
+        } else if (menuselect.equals("createuser")){
+            model.addAttribute("menuselect",menuselect);
+           // model.addAttribute("users", myUserService.findAll());
+        }
+        return "admin/index.html";
+    }
+
+    @PostMapping("/editUser")
+    public String editUser(@RequestParam(name = "id") Long id, Model model) {
+        System.out.println(id);
+        User user = myUserService.findById(id);
+        System.out.println(user.toString());
+        model.addAttribute("editUser", user);
+        // model.addAttribute("users", myUserService.findAll());
+        return "admin/index.html"; // имя вашего HTML-шаблона
+    }
+
+    @PostMapping("/saveUser")
+    public String saveUser(User user) {
+        myUserService.saveUser(user);
+        return "redirect:/admin/users";
+    }
+
+
+
+
+
+}

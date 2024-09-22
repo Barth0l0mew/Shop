@@ -1,0 +1,278 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Административаня панель</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/normalize.css}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .sidebar {
+            background: #333;
+            color: white;
+            width: 250px;
+            min-height: 100vh;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h2 {
+            color: white;
+            text-align: center;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: #0056b3;
+        }
+
+        .main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .main h1 {
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .newUser{
+            outline: none;
+            text-decoration: none;
+            color: rgb(119, 125, 139);
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .success-message {
+            color: green;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="sidebar">
+        <h2>Панель Администратора</h2>
+        <ul>
+            <li><a href="/">Главная</a></li>
+            <li><a href="/admin/users?menuselect=users">Пользователи</a></li>
+            <li><a href="#">Контент</a></li>
+            <li><a href="#">Настройки</a></li>
+            <li><a href="#">Выход</a></li>
+        </ul>
+    </div>
+    <div class="main">
+        <h1>Добро пожаловать в административную панель</h1>
+<!--        <div class="card">-->
+<!--            <h2>Статистика</h2>-->
+<!--            <p>Здесь можно отобразить различные метрики вашей системы.</p>-->
+<!--        </div>-->
+<!--        <div class="card">-->
+<!--            <h2>Управление пользователями</h2>-->
+<!--            <p>Здесь вы можете добавлять, удалять или редактировать пользователей.</p>-->
+<!--        </div>-->
+<!--        <div class="card">-->
+<!--            <h2>Управление контентом</h2>-->
+<!--            <p>Здесь вы можете управлять статьями, страницами и медиафайлами.</p>-->
+<!--        </div>-->
+        <div th:if="${editUser != null}">
+            <h2>Редактирование пользователя</h2>
+            <form th:action="@{/admin/saveUser}" method="post">
+                <input type="hidden" th:name="id" th:value="${editUser.id}"/>
+                <div class="form-group">
+                    <label for="username">Имя пользователя:</label>
+                    <input type="text" id="username" name="username" th:value="${editUser.username}" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="email">Электронная почта:</label>
+                    <input type="email" id="email" name="email" th:value="${editUser.email}" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password" th:value="${editUser.password}" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="role">Роль:</label>
+                    <input type="text" id="role" name="role" th:value="${editUser.role}" class="form-control"/>
+                </div>
+                <button type="submit" class="btn btn-success">Сохранить изменения</button>
+            </form>
+        </div>
+
+        <div class="container__registration" th:if="${menuselect eq 'createuser'}">
+            <h2 class="registration__title">Создание новго пользователя</h2>
+
+            <div class="error-message" th:if="${errorMessage}">
+                <p th:text="${errorMessage}"></p>
+            </div>
+
+            <form th:action="@{/admin/createUser}" method="post" th:object="${user}">
+                <div class="form-group">
+                    <label class="form__label" for="create-username">Имя пользователя:</label>
+                    <input class="form__input" type="text" id="create-username" th:field="*{user.username}" required />
+                </div>
+                <div class="form-group">
+                    <label class="form__label" for="create-email">Электронная почта:</label>
+                    <input class="form__input" type="email" id="create-email" th:field="*{user.email}" required />
+                </div>
+                <div class="form-group">
+                    <label class="form__label" for="create-password">Пароль:</label>
+                    <input class="form__input" type="password" id="create-password" th:field="*{user.userpassword}" required />
+                </div>
+                <div class="form-group">
+                    <label class="form__label" for="create-matchingPassword">Подтверждение пароля:</label>
+                    <input class="form__input" type="password" id="create-matchingPassword" th:field="*{uesr.matchingPassword}" required/>
+                </div>
+                <button class="form__button" type="submit">Зарегистрироваться</button>
+
+            </form>
+        </div>
+
+        <div class="card" th:if="${menuselect eq 'users'}">
+            <h2>Список пользователей</h2>
+            <a class="newUser" href="/admin/createUser"><h5>Создать нового пользователя</h5></a>
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Имя пользователя</th>
+                    <th>Электронная почта</th>
+                    <th>Пароль</th>
+                    <th>Архив</th>
+                    <th>Роль</th>
+                    <th>Править</th>
+                    <th>Удалить</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.username}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.password}"></td>
+                    <td th:text="${user.archive}"></td>
+                    <td th:text="${user.role}"></td>
+                    <td>
+                        <form th:action="@{/admin/editUser(id=${user.id})}" method="post">
+                            <button class="btn btn-primary" type="submit">Править</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post" th:action="@{/admin/deleteUser(id=${user.id})}">
+                            <button class="btn btn-danger" type="submit">Удалить</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+</div>
+</body>
+</html>

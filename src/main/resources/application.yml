@@ -14,6 +14,11 @@ spring:
     properties:
       hibernate:
         format_sql: true
+    open-in-view: true
+  sql:
+    init:
+      data-locations: classpath:data.sql
+      mode: never
   h2:
     console:
       enabled: true

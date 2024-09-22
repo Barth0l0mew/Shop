@@ -1,0 +1,28 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div th:fragment="admintitle">
+    <h1>Добро пожаловать в административную панель</h1>
+    <div class="card">
+        <h2>Статистика</h2>
+        <p>Здесь можно отобразить различные метрики вашей системы.</p>
+    </div>
+    <div class="card">
+        <h2>Управление пользователями</h2>
+        <p>Здесь вы можете добавлять, удалять или редактировать пользователей.</p>
+    </div>
+    <div class="card">
+        <h2>Управление контентом</h2>
+        <p>Здесь вы можете управлять статьями, страницами и медиафайлами.</p>
+    </div>
+</div>
+</body>
+</html>
