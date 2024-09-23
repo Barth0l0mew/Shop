@@ -1,0 +1,13 @@
+@PostMapping("/submit")
+    public String submitCategories(@RequestParam(value = "selectedCategories", required = false) List<Long> selectedCategories, Model model) {
+        if (selectedCategories != null) {
+            // Здесь вы можете обработать выбранные категории
+            model.addAttribute("selectedCategories", selectedCategories);
+            // Например, сохранить их в базе данных или выполнить другие действия
+        } else {
+            model.addAttribute("message", "Не выбрано ни одной категории.");
+        }
+
+        return "result"; // имя шаблона для отображения результата
+    }
+}

@@ -87,6 +87,15 @@
             margin-bottom: 15px;
         }
 
+        .form__category{
+            margin: 0 0 15px 0 ;
+
+
+        }
+        .form__category h4{
+            margin: 0;
+            padding: 5px 0 5px 0;
+        }
         .form-group label {
             display: block;
             margin-bottom: 5px;
@@ -101,6 +110,7 @@
             border-radius: 4px;
             box-sizing: border-box;
         }
+
 
         .form-group input:focus,
         .form-group select:focus {
@@ -139,6 +149,7 @@
             font-size: 1.1em;
             margin-bottom: 15px;
         }
+
 
 
         @media (max-width: 768px) {
@@ -190,6 +201,9 @@
         </div>
         <div th:if="${page}=='productlist'">
             <div th:replace="/admin/product/productlist::productlist(productlist=${productlist})"></div>
+        </div>
+        <div th:if="${page}=='addproduct'">
+            <div th:replace="/admin/product/addproduct::addProduct(newProduct=${newProduct},categories=${categories},errorMessage=${errorMessage})"></div>
         </div>
 
     </div>
