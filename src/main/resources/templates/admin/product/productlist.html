@@ -19,6 +19,7 @@
                 <th>Название</th>
                 <th>Цена</th>
                 <th>Описание</th>
+                <th>Категории</th>
                 <th>Править</th>
                 <th>Удалить</th>
 
@@ -30,14 +31,15 @@
                 <td th:text="${product.title}"></td>
                 <td th:text="${product.price}"></td>
                 <td th:text="${product.description}"></td>
-
+                <td> <span th:each="category, iterStat  : ${product.categories}"
+                           th:text="${category.title} + ${!iterStat.last ? ', ' : ''}">Категория</span></td>
                 <td>
                     <form th:action="@{/admin/editUser(id=${product.id})}" method="post">
                         <button class="btn btn-primary" type="submit">Править</button>
                     </form>
                 </td>
                 <td>
-                    <form method="post" th:action="@{/admin/deleteUser(id=${product.id})}">
+                    <form method="post" th:action="@{/admin/product/deleteproduct(id=${product.id})}">
                         <button class="btn btn-danger" type="submit">Удалить</button>
                     </form>
                 </td>

@@ -1,11 +1,14 @@
 package Shop.Shop.service;
 
 import Shop.Shop.dao.MyCategoryRepository;
+import Shop.Shop.dao.MyProductRepository;
 import Shop.Shop.dto.CategoryDTO;
 import Shop.Shop.dto.UserDTO;
 import Shop.Shop.model.Category;
+import Shop.Shop.model.Product;
 import Shop.Shop.model.Role;
 import Shop.Shop.model.User;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +18,8 @@ import java.util.Optional;
 
 @Service
 public class MyCategoryService {
+    @Autowired
+    private MyProductRepository myProductRepository;
     @Autowired
     private MyCategoryRepository myCategoryRepository;
     public List<Category> findAll (){
@@ -40,7 +45,17 @@ public class MyCategoryService {
     public void saveCategory(Category category) {
         myCategoryRepository.save(category);
     }
+    @Transactional
     public void deleteCategory(Category category) {
-        myCategoryRepository.delete(category);
+
+//        for (Product product : category.getProducts()) {
+//            product.removeCategory(category);
+//        }
+//        List<Product> products = myProductRepository.findByCategories_Id(categoryId);
+//        for (Product product : products) {
+//            product.getCategories().removeIf(category -> category.getId().equals(categoryId));
+//            productRepository.save(product); // обновляем продукт
+//        }
+        myCategoryRepository.delete(category); //old
     }
 }

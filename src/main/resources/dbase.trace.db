@@ -1,105 +1,166 @@
-2024-09-15 15:30:01 jdbc[3]: exception
-java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
-	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1573)
-	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:469)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360)
-	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
-	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
-	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
-	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:587)
-	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:828)
-	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:705)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
-	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:704)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:840)
-2024-09-15 15:30:10 jdbc[3]: exception
-java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
-	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1573)
-	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:469)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360)
-	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
-	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
-	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
-	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:587)
-	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:828)
-	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:705)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
-	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:704)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:840)
-2024-09-15 15:31:36 jdbc[4]: exception
-java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
-	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1573)
-	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:469)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360)
-	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
-	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
-	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
-	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:587)
-	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:828)
-	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:705)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
-	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:704)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:840)
-2024-09-15 15:31:36 jdbc[5]: exception
-java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
-	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1573)
-	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:469)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360)
-	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
-	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
-	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
-	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:587)
-	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:828)
-	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:705)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
-	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:704)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:840)
-2024-09-15 16:58:50 jdbc[3]: exception
-java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
-	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1573)
-	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:469)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360)
-	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
-	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
-	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
-	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:587)
-	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:828)
-	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:705)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
-	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:704)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:840)
+2024-09-25 06:30:42.650308+03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE `employee` (\000d\000a  `employee_id` int[*](11) NOT NULL AUTO_INCREMENT,\000d\000a  `first_name` varchar(50) DEFAULT NULL,\000d\000a  `last_name` varchar(50) DEFAULT NULL,\000d\000a  PRIMARY KEY (`employee_id`)\000d\000a) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8"; ожидалось "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE `employee` (\000d\000a  `employee_id` int[*](11) NOT NULL AUTO_INCREMENT,\000d\000a  `first_name` varchar(50) DEFAULT NULL,\000d\000a  `last_name` varchar(50) DEFAULT NULL,\000d\000a  PRIMARY KEY (`employee_id`)\000d\000a) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE `employee` (
+  `employee_id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(50) DEFAULT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`employee_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 [42001-224]
+2024-09-25 06:30:42.661320+03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE `project` (\000d\000a  `project_id` int[*](11) NOT NULL AUTO_INCREMENT,\000d\000a  `title` varchar(50) DEFAULT NULL,\000d\000a  PRIMARY KEY (`project_id`)\000d\000a) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8"; ожидалось "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE `project` (\000d\000a  `project_id` int[*](11) NOT NULL AUTO_INCREMENT,\000d\000a  `title` varchar(50) DEFAULT NULL,\000d\000a  PRIMARY KEY (`project_id`)\000d\000a) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE `project` (
+  `project_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`project_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 [42001-224]
+2024-09-25 06:30:42.661320+03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE `employee_project` (\000d\000a  `employee_id` int[*](11) NOT NULL,\000d\000a  `project_id` int(11) NOT NULL,\000d\000a  PRIMARY KEY (`employee_id`,`project_id`),\000d\000a  KEY `project_id` (`project_id`),\000d\000a  CONSTRAINT `employee_project_ibfk_1` \000d\000a   FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`),\000d\000a  CONSTRAINT `employee_project_ibfk_2` \000d\000a   FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`)\000d\000a) ENGINE=InnoDB DEFAULT CHARSET=utf8"; ожидалось "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE `employee_project` (\000d\000a  `employee_id` int[*](11) NOT NULL,\000d\000a  `project_id` int(11) NOT NULL,\000d\000a  PRIMARY KEY (`employee_id`,`project_id`),\000d\000a  KEY `project_id` (`project_id`),\000d\000a  CONSTRAINT `employee_project_ibfk_1` \000d\000a   FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`),\000d\000a  CONSTRAINT `employee_project_ibfk_2` \000d\000a   FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`)\000d\000a) ENGINE=InnoDB DEFAULT CHARSET=utf8"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE `employee_project` (
+  `employee_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  PRIMARY KEY (`employee_id`,`project_id`),
+  KEY `project_id` (`project_id`),
+  CONSTRAINT `employee_project_ibfk_1` 
+   FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`),
+  CONSTRAINT `employee_project_ibfk_2` 
+   FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 [42001-224]
+2024-09-25 06:31:06.208500+03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE [*]'employee' (\000d\000a  `employee_id` int(11) NOT NULL AUTO_INCREMENT,\000d\000a  `first_name` varchar(50) DEFAULT NULL,\000d\000a  `last_name` varchar(50) DEFAULT NULL,\000d\000a  PRIMARY KEY (`employee_id`)\000d\000a) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8"; ожидалось "identifier"
+Syntax error in SQL statement "CREATE TABLE [*]'employee' (\000d\000a  `employee_id` int(11) NOT NULL AUTO_INCREMENT,\000d\000a  `first_name` varchar(50) DEFAULT NULL,\000d\000a  `last_name` varchar(50) DEFAULT NULL,\000d\000a  PRIMARY KEY (`employee_id`)\000d\000a) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8"; expected "identifier"; SQL statement:
+CREATE TABLE 'employee' (
+  `employee_id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(50) DEFAULT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`employee_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 [42001-224]
+2024-09-25 06:31:06.209499+03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE `project` (\000d\000a  `project_id` int[*](11) NOT NULL AUTO_INCREMENT,\000d\000a  `title` varchar(50) DEFAULT NULL,\000d\000a  PRIMARY KEY (`project_id`)\000d\000a) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8"; ожидалось "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE `project` (\000d\000a  `project_id` int[*](11) NOT NULL AUTO_INCREMENT,\000d\000a  `title` varchar(50) DEFAULT NULL,\000d\000a  PRIMARY KEY (`project_id`)\000d\000a) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE `project` (
+  `project_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`project_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 [42001-224]
+2024-09-25 06:31:06.210499+03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE `employee_project` (\000d\000a  `employee_id` int[*](11) NOT NULL,\000d\000a  `project_id` int(11) NOT NULL,\000d\000a  PRIMARY KEY (`employee_id`,`project_id`),\000d\000a  KEY `project_id` (`project_id`),\000d\000a  CONSTRAINT `employee_project_ibfk_1` \000d\000a   FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`),\000d\000a  CONSTRAINT `employee_project_ibfk_2` \000d\000a   FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`)\000d\000a) ENGINE=InnoDB DEFAULT CHARSET=utf8"; ожидалось "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE `employee_project` (\000d\000a  `employee_id` int[*](11) NOT NULL,\000d\000a  `project_id` int(11) NOT NULL,\000d\000a  PRIMARY KEY (`employee_id`,`project_id`),\000d\000a  KEY `project_id` (`project_id`),\000d\000a  CONSTRAINT `employee_project_ibfk_1` \000d\000a   FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`),\000d\000a  CONSTRAINT `employee_project_ibfk_2` \000d\000a   FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`)\000d\000a) ENGINE=InnoDB DEFAULT CHARSET=utf8"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE `employee_project` (
+  `employee_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  PRIMARY KEY (`employee_id`,`project_id`),
+  KEY `project_id` (`project_id`),
+  CONSTRAINT `employee_project_ibfk_1` 
+   FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`),
+  CONSTRAINT `employee_project_ibfk_2` 
+   FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 [42001-224]
+2024-09-25 06:31:44.769668+03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE employee (\000d\000a  employee_id int[*](11) NOT NULL AUTO_INCREMENT,\000d\000a first_name varchar(50) DEFAULT NULL,\000d\000a  last_name varchar(50) DEFAULT NULL,\000d\000a  PRIMARY KEY (employee_id)\000d\000a) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8"; ожидалось "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE employee (\000d\000a  employee_id int[*](11) NOT NULL AUTO_INCREMENT,\000d\000a first_name varchar(50) DEFAULT NULL,\000d\000a  last_name varchar(50) DEFAULT NULL,\000d\000a  PRIMARY KEY (employee_id)\000d\000a) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE employee (
+  employee_id int(11) NOT NULL AUTO_INCREMENT,
+ first_name varchar(50) DEFAULT NULL,
+  last_name varchar(50) DEFAULT NULL,
+  PRIMARY KEY (employee_id)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 [42001-224]
+2024-09-25 06:31:44.770668+03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE `project` (\000d\000a  `project_id` int[*](11) NOT NULL AUTO_INCREMENT,\000d\000a  `title` varchar(50) DEFAULT NULL,\000d\000a  PRIMARY KEY (`project_id`)\000d\000a) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8"; ожидалось "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE `project` (\000d\000a  `project_id` int[*](11) NOT NULL AUTO_INCREMENT,\000d\000a  `title` varchar(50) DEFAULT NULL,\000d\000a  PRIMARY KEY (`project_id`)\000d\000a) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE `project` (
+  `project_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`project_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 [42001-224]
+2024-09-25 06:31:44.771668+03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE `employee_project` (\000d\000a  `employee_id` int[*](11) NOT NULL,\000d\000a  `project_id` int(11) NOT NULL,\000d\000a  PRIMARY KEY (`employee_id`,`project_id`),\000d\000a  KEY `project_id` (`project_id`),\000d\000a  CONSTRAINT `employee_project_ibfk_1` \000d\000a   FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`),\000d\000a  CONSTRAINT `employee_project_ibfk_2` \000d\000a   FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`)\000d\000a) ENGINE=InnoDB DEFAULT CHARSET=utf8"; ожидалось "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE `employee_project` (\000d\000a  `employee_id` int[*](11) NOT NULL,\000d\000a  `project_id` int(11) NOT NULL,\000d\000a  PRIMARY KEY (`employee_id`,`project_id`),\000d\000a  KEY `project_id` (`project_id`),\000d\000a  CONSTRAINT `employee_project_ibfk_1` \000d\000a   FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`),\000d\000a  CONSTRAINT `employee_project_ibfk_2` \000d\000a   FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`)\000d\000a) ENGINE=InnoDB DEFAULT CHARSET=utf8"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE `employee_project` (
+  `employee_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  PRIMARY KEY (`employee_id`,`project_id`),
+  KEY `project_id` (`project_id`),
+  CONSTRAINT `employee_project_ibfk_1` 
+   FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`),
+  CONSTRAINT `employee_project_ibfk_2` 
+   FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 [42001-224]
+2024-09-25 06:32:45.136215+03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE employee (\000d\000a  employee_id int[*](11) NOT NULL ,\000d\000a first_name varchar(50) ,\000d\000a  last_name varchar(50) ,\000d\000a  PRIMARY KEY (employee_id)\000d\000a) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8"; ожидалось "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE employee (\000d\000a  employee_id int[*](11) NOT NULL ,\000d\000a first_name varchar(50) ,\000d\000a  last_name varchar(50) ,\000d\000a  PRIMARY KEY (employee_id)\000d\000a) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE employee (
+  employee_id int(11) NOT NULL ,
+ first_name varchar(50) ,
+  last_name varchar(50) ,
+  PRIMARY KEY (employee_id)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 [42001-224]
+2024-09-25 06:32:45.137215+03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE `project` (\000d\000a  `project_id` int[*](11) NOT NULL AUTO_INCREMENT,\000d\000a  `title` varchar(50) DEFAULT NULL,\000d\000a  PRIMARY KEY (`project_id`)\000d\000a) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8"; ожидалось "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE `project` (\000d\000a  `project_id` int[*](11) NOT NULL AUTO_INCREMENT,\000d\000a  `title` varchar(50) DEFAULT NULL,\000d\000a  PRIMARY KEY (`project_id`)\000d\000a) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE `project` (
+  `project_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`project_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 [42001-224]
+2024-09-25 06:32:45.138216+03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE `employee_project` (\000d\000a  `employee_id` int[*](11) NOT NULL,\000d\000a  `project_id` int(11) NOT NULL,\000d\000a  PRIMARY KEY (`employee_id`,`project_id`),\000d\000a  KEY `project_id` (`project_id`),\000d\000a  CONSTRAINT `employee_project_ibfk_1` \000d\000a   FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`),\000d\000a  CONSTRAINT `employee_project_ibfk_2` \000d\000a   FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`)\000d\000a) ENGINE=InnoDB DEFAULT CHARSET=utf8"; ожидалось "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE `employee_project` (\000d\000a  `employee_id` int[*](11) NOT NULL,\000d\000a  `project_id` int(11) NOT NULL,\000d\000a  PRIMARY KEY (`employee_id`,`project_id`),\000d\000a  KEY `project_id` (`project_id`),\000d\000a  CONSTRAINT `employee_project_ibfk_1` \000d\000a   FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`),\000d\000a  CONSTRAINT `employee_project_ibfk_2` \000d\000a   FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`)\000d\000a) ENGINE=InnoDB DEFAULT CHARSET=utf8"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE `employee_project` (
+  `employee_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  PRIMARY KEY (`employee_id`,`project_id`),
+  KEY `project_id` (`project_id`),
+  CONSTRAINT `employee_project_ibfk_1` 
+   FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`),
+  CONSTRAINT `employee_project_ibfk_2` 
+   FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 [42001-224]
+2024-09-25 06:33:08.824456+03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE employee (\000d\000a  employee_id int[*](11) NOT NULL ,\000d\000a first_name varchar(50) ,\000d\000a  last_name varchar(50) ,\000d\000a  PRIMARY KEY (employee_id)\000d\000a) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8"; ожидалось "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE employee (\000d\000a  employee_id int[*](11) NOT NULL ,\000d\000a first_name varchar(50) ,\000d\000a  last_name varchar(50) ,\000d\000a  PRIMARY KEY (employee_id)\000d\000a) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE employee (
+  employee_id int(11) NOT NULL ,
+ first_name varchar(50) ,
+  last_name varchar(50) ,
+  PRIMARY KEY (employee_id)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 [42001-224]
+2024-09-25 06:34:06.239941+03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "create table employee (\000d\000a  employee_id int[*](11) NOT NULL ,\000d\000a first_name varchar(50) ,\000d\000a  last_name varchar(50) ,\000d\000a  PRIMARY KEY (employee_id)\000d\000a)"; ожидалось "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "create table employee (\000d\000a  employee_id int[*](11) NOT NULL ,\000d\000a first_name varchar(50) ,\000d\000a  last_name varchar(50) ,\000d\000a  PRIMARY KEY (employee_id)\000d\000a)"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+create table employee (
+  employee_id int(11) NOT NULL ,
+ first_name varchar(50) ,
+  last_name varchar(50) ,
+  PRIMARY KEY (employee_id)
+) [42001-224]
+2024-09-25 06:56:34.065350+03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "CATEGORYS" не найдена
+Table "CATEGORYS" not found; SQL statement:
+SELECT * FROM CATEGORYS [42102-224]
+2024-09-25 06:59:53.814945+03:00 jdbc[3]: null
+org.h2.message.DbException: Незакрытое приложением соединение уничтожено сборщиком мусора
+The connection was not closed by the application and is garbage collected [90018-224]
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:218)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:135)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:724)
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:703)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: Незакрытое приложением соединение уничтожено сборщиком мусора
+The connection was not closed by the application and is garbage collected [90018-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 16 more
