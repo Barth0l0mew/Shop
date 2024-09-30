@@ -205,6 +205,9 @@
         <div th:if="${page}=='addproduct'">
             <div th:replace="/admin/product/addproduct::addProduct(newProduct=${newProduct},categories=${categories},errorMessage=${errorMessage})"></div>
         </div>
+        <div th:if="${page}=='productedit'">
+            <div th:replace="/admin/product/productedit::productedit(editProduct=${editProduct},categories=${categories})"></div>
+        </div>
 
     </div>
 

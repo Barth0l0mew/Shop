@@ -2,6 +2,8 @@ package Shop.Shop.controller;
 
 import Shop.Shop.dto.CategoryDTO;
 import Shop.Shop.dto.ProductDTO;
+import Shop.Shop.model.Category;
+import Shop.Shop.model.Product;
 import Shop.Shop.service.MyCategoryService;
 import Shop.Shop.service.MyProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +42,21 @@ public class ProductController {
     public String deleteUser(@RequestParam(name = "id") Long id, Model model) {
         System.out.println("delete category "+id+ " "+myProductService.findById(id));
         myProductService.deleteProduct(myProductService.findById(id));
+        return "redirect:/admin/product/productlist";
+    }
+    @PostMapping("/product/productedit")
+    public String editproduct(@RequestParam(name = "id") Long id, Model model) {
+        System.out.println(id);
+        Product product = myProductService.findById(id);
+        model.addAttribute("categories", myCategoryService.findAll());
+        model.addAttribute("editProduct", product);
+        model.addAttribute("page", "productedit");
+        return "admin/index"; // имя вашего HTML-шаблона
+    }
+    @PostMapping("/product/saveProduct")
+    public String saveCategory( @RequestParam(name = "id") Long id, @ModelAttribute Product product) {
+        System.out.println("save product "+id+" "+product);
+        myProductService.saveProduct(product);
         return "redirect:/admin/product/productlist";
     }
 }

@@ -10,7 +10,9 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -27,32 +29,12 @@ public class Product {
     private String title;
     private BigDecimal price;
     private String description;
-    //@ManyToMany (cascade = CascadeType.ALL)
-//    @ManyToMany
-//    @JoinTable(
-//            name = "product_category",
-//            joinColumns = @JoinColumn(name = "product_id"),
-//            inverseJoinColumns = @JoinColumn(name = "category_id")
-//    )
-    // @ManyToMany(fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
-    @ManyToMany (cascade = CascadeType.ALL)
+    @ManyToMany (cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(
             name = "products_categorys",
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
-    private List<Category> categories;
-//    @ManyToMany(mappedBy = "products",cascade = CascadeType.ALL)
-//    private List<Category> categories = new ArrayList<>();
-//    public void removeCategory(Category category) {
-//        this.categories.remove(category);
-//        category.getProducts().remove(this);
-//    }
-//    @ManyToMany
-//    @JoinTable (name = "products_categories",
-//            joinColumns = @JoinColumn (name = "product_id"),
-//            inverseJoinColumns = @JoinColumn (name = "category_id"))
-//    private List<Category> categories;
-//    @ManyToMany(mappedBy = "products", cascade = CascadeType.ALL)
-//    private List<Category> categories;
+    private List<Category> categories = new ArrayList<>();
+
 }

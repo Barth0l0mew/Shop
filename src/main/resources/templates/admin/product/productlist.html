@@ -34,7 +34,7 @@
                 <td> <span th:each="category, iterStat  : ${product.categories}"
                            th:text="${category.title} + ${!iterStat.last ? ', ' : ''}">Категория</span></td>
                 <td>
-                    <form th:action="@{/admin/editUser(id=${product.id})}" method="post">
+                    <form th:action="@{/admin/product/productedit(id=${product.id})}" method="post">
                         <button class="btn btn-primary" type="submit">Править</button>
                     </form>
                 </td>

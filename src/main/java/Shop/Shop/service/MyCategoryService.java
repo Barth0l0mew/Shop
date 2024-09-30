@@ -47,9 +47,14 @@ public class MyCategoryService {
     }
     @Transactional
     public void deleteCategory(Category category) {
-
-//        for (Product product : category.getProducts()) {
-//            product.removeCategory(category);
+        System.out.println("delete category service "+category.toString());
+        List<Product> products = myProductRepository.findAll();
+        for (Product product: products){
+                product.getCategories().remove(category);
+        }
+        //        for (Product product : category.getProducts()) {
+//            System.out.println("=======delete product service "+product.toString());
+//            product.getCategories().remove(category);
 //        }
 //        List<Product> products = myProductRepository.findByCategories_Id(categoryId);
 //        for (Product product : products) {

@@ -60,6 +60,7 @@ public class CategoryController {
     }
     @PostMapping("/category/saveCategory")
     public String saveCategory(Category category) {
+        System.out.println("save category "+category);
         myCategoryService.saveCategory(category);
         return "redirect:/admin/categorylist";
     }

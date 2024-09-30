@@ -9,27 +9,34 @@
     <title>Useredit</title>
 </head>
 <body>
-    <div th:fragment="useredit(editUser)">
-        <h2>Редактирование пользователя</h2>
-        <form th:action="@{/admin/saveUser}" method="post">
-            <input type="hidden" th:name="id" th:value="${editUser.id}"/>
+    <div th:fragment="productedit(editProduct,categories)">
+        <h2>Редактирование продукта</h2>
+        <form th:action="@{/admin/product/saveProduct(id=${editProduct.id})}" th:object="${editProduct}" method="post">
+            <h2 th:text="${editProduct.id}"></h2>
             <div class="form-group">
-                <label for="username">Имя пользователя:</label>
-                <input type="text" id="username" name="username" th:value="${editUser.username}" class="form-control"/>
+                <label for="title">Название продукта:</label>
+                <input type="text" id="title" name="title" th:value="${editProduct.title}" class="form-control"/>
             </div>
             <div class="form-group">
-                <label for="email">Электронная почта:</label>
-                <input type="email" id="email" name="email" th:value="${editUser.email}" class="form-control"/>
+                <label for="description">Описание продукта:</label>
+                <input type="text" id="description" name="description" th:value="${editProduct.description}" class="form-control"/>
             </div>
             <div class="form-group">
-                <label for="password">Пароль:</label>
-                <input type="password" id="password" name="password" th:value="${editUser.password}" class="form-control"/>
+                <label for="price">Цена:</label>
+                <input type="text" id="price" name="price" th:value="${editProduct.price}" class="form-control"/>
             </div>
-            <div class="form-group">
-                <label for="role">Роль:</label>
-                <input type="text" id="role" name="role" th:value="${editUser.role}" class="form-control"/>
+
+            <div class="form__category">
+                <h4>Список категорий</h4>
+                <div th:each="category : ${categories}">
+                    <label>
+                        <input type="checkbox" th:field="${editProduct.categories}" th:value="${category.id}" name="selectedCategories" />
+                        <span th:text="${category.title}">Категория</span>
+                    </label>
+                </div>
             </div>
-            <button type="submit" class="btn btn-success">Сохранить изменения</button>
+
+            <button type="submit" class="btn btn-success">Cохраниь пордукт</button>
         </form>
     </div>
 </body>
