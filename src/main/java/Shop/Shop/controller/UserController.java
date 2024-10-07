@@ -30,7 +30,7 @@ public class UserController {
     public String editUser(@RequestParam(name = "id") Long id, Model model) {
         System.out.println(id);
         User user = myUserService.findById(id);
-        System.out.println(user.toString());
+        System.out.println(user.toString()+" ====  "+user.getRole().name());
         model.addAttribute("editUser", user);
         model.addAttribute("page", "useredit");
         return "admin/index"; // имя вашего HTML-шаблона

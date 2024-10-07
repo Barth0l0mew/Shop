@@ -19,7 +19,9 @@
         <div class="error-message" th:if="${errorMessage}">
             <p th:text="${errorMessage}"></p>
         </div>
-        <form th:action="@{/admin/product/registration}" method="post" th:object="${newProduct}">
+        <form th:action="@{/admin/product/registration}"
+              enctype="multipart/form-data"
+              method="post" th:object="${newProduct}">
             <div class="form-group">
                 <label for="title">Название продукта:</label>
                 <input type="text" id="title" name="title" th:value="${newProduct.title}" class="form-control"/>
@@ -42,7 +44,10 @@
                     </label>
                 </div>
             </div>
-
+            <div class="form-group files">
+                    <label>Выбрать картинку </label>
+                    <input type="file" class="form-control" multiple="" name="file">
+            </div>
             <button type="submit" class="btn btn-success">Создать пользователя</button>
         </form>
     </div>

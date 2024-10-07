@@ -5,6 +5,7 @@ import Shop.Shop.dto.UserDTO;
 import Shop.Shop.model.Role;
 import Shop.Shop.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,9 @@ import java.util.Optional;
 public class MyUserService {
     @Autowired
     private MyUserRepository myUserRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public List<User> findAll() {
         return myUserRepository.findAll();
     }
@@ -47,7 +51,7 @@ public class MyUserService {
         }else {
             User user = User.builder()
                     .username(userDTO.getUsername())
-                    .password(userDTO.getPassword())
+                    .password(passwordEncoder.encode(userDTO.getPassword()))
                     .archive(false)
                     .email(userDTO.getEmail())
                     .role(Role.USER)

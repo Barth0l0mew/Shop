@@ -34,6 +34,7 @@ public class MyProductService {
                     .description(productDTO.getDescription())
                     .price(productDTO.getPrice())
                     .categories(productDTO.getCategories())
+                    .link(productDTO.getLink())
                     .build();
 
             System.out.println(product.toString());

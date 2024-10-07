@@ -29,6 +29,7 @@ public class Product {
     private String title;
     private BigDecimal price;
     private String description;
+    private String link;
     @ManyToMany (cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(
             name = "products_categorys",

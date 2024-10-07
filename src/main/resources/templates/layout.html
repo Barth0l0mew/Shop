@@ -14,6 +14,37 @@
         <div th:replace="menu.html"></div>
     </div>
 
+    <section class="products">
+        <div class="container">
+            <h2>Наши Товары</h2>
+            <div class="categories" >
+                <span class="category" th:each="category : ${categories}"
+                        th:text="${category.title}" ></span>
+            </div>
+
+            <p>Здесь будет список товаров.</p>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200" alt="Название товара" class="product-image">
+                <div class="product-info">
+                    <h2 class="product-name">Название товара</h2>
+                    <p class="product-description">Краткое описание товара, его особенности и преимущества. Здесь можно указать дополнительные детали для покупателя.</p>
+                    <span class="product-price">Цена: 999 Р.</span>
+                </div>
+            </div>
+            <!-- Добавьте товары здесь -->
+        </div>
+    </section>
+
+    <section class="reviews">
+        <h2>Отзывы</h2>
+        <p>Здесь будут отзывы пользователей.</p>
+        <!-- Добавьте отзывы здесь -->
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Мой Магазин. Все права защищены.</p>
+    </footer>
+
 
 </body>
 </html>

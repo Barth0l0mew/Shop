@@ -1,4 +1,8 @@
 spring:
+  security:
+    user:
+      name: user
+      password: user
   application:
     name: Shop
   datasource:

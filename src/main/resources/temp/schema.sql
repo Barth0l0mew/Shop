@@ -39,6 +39,7 @@ create table products (
                           description varchar(255),
                           price numeric(38,2),
                           title varchar(255),
+                          link varchar(255),
                           primary key (id)
 );
 create table products_categories (

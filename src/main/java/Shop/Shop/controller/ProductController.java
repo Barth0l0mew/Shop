@@ -10,6 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/admin")
@@ -33,8 +37,27 @@ public class ProductController {
         return "admin/index"; // Имя HTML файла с формой
     }
     @PostMapping("product/registration")
-    public String addProduct(@ModelAttribute("newProduct") ProductDTO productDTO) {
+    public String addProduct(@RequestParam("file") MultipartFile file, @ModelAttribute("newProduct") ProductDTO productDTO) {
         System.out.println("+++newproductDTo++"+ productDTO.toString());
+        String fileName = file.getOriginalFilename();
+        System.out.println("fileName==========="+fileName);
+        if (!fileName.equals("")){
+
+            File uploadedDirectory = new File("src/main/resources/static/uploaded/");
+            System.out.println(uploadedDirectory);
+            try {
+                    file.transferTo(new File(uploadedDirectory.getAbsolutePath() + "/" + fileName));
+                    productDTO.setLink(uploadedDirectory.getAbsolutePath() + "/" + fileName);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        else
+        {
+            productDTO.setLink("src/main/resources/static/image/not-found.png");
+        }
+
         myProductService.save(productDTO);
         return "redirect:/admin/product/productlist";
     }

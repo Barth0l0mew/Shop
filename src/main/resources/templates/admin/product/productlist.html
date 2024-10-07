@@ -20,6 +20,7 @@
                 <th>Цена</th>
                 <th>Описание</th>
                 <th>Категории</th>
+                <th>Картинка</th>
                 <th>Править</th>
                 <th>Удалить</th>
 
@@ -31,6 +32,11 @@
                 <td th:text="${product.title}"></td>
                 <td th:text="${product.price}"></td>
                 <td th:text="${product.description}"></td>
+                <td th:text="${product.link}"></td>
+                <td>
+<!--                    <img th:src="@{/image/not-found.png}" alt="Image"/>-->
+                    <img th:src="${product.link}" alt="Image"/>
+                </td>
                 <td> <span th:each="category, iterStat  : ${product.categories}"
                            th:text="${category.title} + ${!iterStat.last ? ', ' : ''}">Категория</span></td>
                 <td>

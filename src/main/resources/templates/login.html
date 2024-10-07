@@ -21,8 +21,7 @@
         <p th:text="${errorMessage}"></p>
     </div>
 
-    <form th:action="@{/log}" method="post" th:object="${user}">
-
+    <form th:action="@{/log}" method="post" th:object="${user}" >
         <div class="form-group">
             <label class="form__label" for="username">Имя пользователя:</label>
             <input class="form__input" type="text" id="username" th:field="*{username}" required />
@@ -33,6 +32,8 @@
         </div>
 
         <button class="form__button" type="submit">Войти</button>
+        <h2><a href="/registration">Регистрация</a></h2>
     </form>
+
 </body>
 </html>
