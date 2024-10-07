@@ -47,7 +47,7 @@ public class ProductController {
             System.out.println(uploadedDirectory);
             try {
                     file.transferTo(new File(uploadedDirectory.getAbsolutePath() + "/" + fileName));
-                    productDTO.setLink(uploadedDirectory.getAbsolutePath() + "/" + fileName);
+                    productDTO.setLink("/uploaded/" + fileName);
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -55,7 +55,7 @@ public class ProductController {
         }
         else
         {
-            productDTO.setLink("src/main/resources/static/image/not-found.png");
+            productDTO.setLink("/image/not-found.png");
         }
 
         myProductService.save(productDTO);
