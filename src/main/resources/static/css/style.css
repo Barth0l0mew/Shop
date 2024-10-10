@@ -18,10 +18,12 @@ body{
 
 
 .container{
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     max-width: 1270px ;
 
     margin: 0 auto;
+    padding-left: 50px;
+    padding-right: 50px ;
 }
 .menu__header{
     display: flex;
@@ -31,10 +33,10 @@ body{
 
 }
 .menu__contact{
-    border: 1px solid black;
+    /*border: 1px solid black;*/
 }
 .menu__logo{
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     font-family: "Qwitcher Grypen", cursive;
     font-weight: 700;
     font-style: normal;
@@ -73,12 +75,18 @@ body{
 }
 .category{
     margin: 5px;
-    padding: 5px;
+    padding: 15px;
     border-radius: 25px;
-    border: 1px solid rgb(119, 125, 139);
+    border: 1px solid rgb(199, 173, 160);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.products__container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 50px;
+}
 
 .product-card {
     background-color: white;
@@ -89,6 +97,9 @@ body{
     text-align: center;
     padding: 15px;
     transition: transform 0.2s;
+    /*новый стиль*/
+    height: 350px;
+    margin-bottom: 20px;
 }
 
 .product-card:hover {
@@ -98,15 +109,30 @@ body{
 .product-image {
     width: 100%;
     border-radius: 5px;
+
+    /*новый стиль*/
+    height: 150px;
+    object-fit: cover;
 }
 
 .product-info {
     margin-top: 10px;
+    /*новый стиль*/
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .product-name {
     font-size: 20px;
     margin: 10px 0;
+    /*новый стиль*/
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* показывает три строки */
+    overflow: hidden; /* скрывает избыточный текст */
+    text-overflow: ellipsis; /* добавляет '...' в конце */
 }
 
 .product-description {
@@ -156,12 +182,6 @@ body{
 .color input {
     background-color: #f1f1f1;
 }
-
-
-
-
-
-
 .menu__footer{
     display: flex;
     flex-direction: row;
@@ -214,7 +234,16 @@ input[type="password"] {
 }
 .products{
     background-color: rgb(214, 195, 180);
+    padding-top: 25px;
 
+}
+.about{
+    padding-top: 25px;
+    /*padding-bottom: 25px;*/
+}
+.about__title{
+    margin-bottom: 25px;
+    display: block;
 }
 
 .form__button:hover {
@@ -228,7 +257,10 @@ input[type="password"] {
 }
 
 .products, .reviews {
-    padding: 20px;
+    /*padding: 20px;*/
+}
+.footer{
+    background-color: rgb(214, 195, 180);
 }
 footer {
     text-align: center;

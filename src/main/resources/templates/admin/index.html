@@ -110,7 +110,45 @@
             border-radius: 4px;
             box-sizing: border-box;
         }
+        .product__photo{
+            width: 50px;
+            height: 50px;
 
+        }
+        .product__photo img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        table {
+            width: 100%;              /* Ширина таблицы 100% от родительского элемента */
+            border-collapse: collapse;/* Схлопывание границ таблицы */
+            max-width: 1000px;       /* Максимальная ширина ячейки 1000px */
+            table-layout: fixed;         /* Фиксируем таблицу для равномерного распределения ширины */
+        }
+
+        td {
+
+            white-space: nowrap;      /* Предотвращает перенос текста на новую строку */
+            overflow: hidden;         /* Скрывает переполненный текст */
+            text-overflow: ellipsis;  /* Добавляет троеточие к переполненному тексту */
+            border: 1px solid #ddd;   /* Граница ячейки для визуального отделения */
+            padding: 8px;             /* Отступы внутри ячейки */
+        }
+        /* Ширины колонок */
+        .first-column {
+            min-width: 50px; /* Ширина первой колонки */
+        }
+
+        .last-column {
+            width: 100px; /* Ширина последней колонки */
+        }
+
+        /* Для остальных колонок */
+        .middle-column {
+            width: calc((100% - 150px) / 6); /* Динамическая ширина */
+        }
 
         .form-group input:focus,
         .form-group select:focus {
@@ -185,7 +223,7 @@
                     <div  th:replace="/admin/users/userlist::userlist(users=${users})"></div>
         </div>
         <div th:if="${page}=='useredit'">
-            <div th:replace="/admin/users/useredit::useredit(editUser=${editUser})"></div>
+            <div th:replace="/admin/users/useredit::useredit(editUser=${editUser},role=${role})"></div>
         </div>
         <div th:if="${page}=='adduser'">
             <div th:replace="/admin/users/adduser::adduser(newUser=${newUser},errorMessage=${errorMessage})"></div>

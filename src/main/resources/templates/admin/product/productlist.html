@@ -15,14 +15,15 @@
         <table>
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Название</th>
-                <th>Цена</th>
-                <th>Описание</th>
-                <th>Категории</th>
-                <th>Картинка</th>
-                <th>Править</th>
-                <th>Удалить</th>
+                <th class="first-column">ID</th>
+                <th class="middle-column">Название</th>
+                <th class="middle-column" >Цена</th>
+                <th class="middle-column">Описание</th>
+                <th class="middle-column">Категории</th>
+                <th class="middle-column">Ссылка</th>
+                <th class="middle-column">Картинка</th>
+                <th class="last-column">Править</th>
+                <th class="last-column">Удалить</th>
 
             </tr>
             </thead>
@@ -32,13 +33,15 @@
                 <td th:text="${product.title}"></td>
                 <td th:text="${product.price}"></td>
                 <td th:text="${product.description}"></td>
-                <td th:text="${product.link}"></td>
-                <td>
-<!--                    <img th:src="@{/image/not-found.png}" alt="Image"/>-->
-                    <img th:src="${product.link}" alt="Image"/>
-                </td>
+
                 <td> <span th:each="category, iterStat  : ${product.categories}"
                            th:text="${category.title} + ${!iterStat.last ? ', ' : ''}">Категория</span></td>
+                <td th:text="${product.link}"></td>
+                <td>
+                    <!--                    <img th:src="@{/image/not-found.png}" alt="Image"/>-->
+                    <div class="product__photo" > <img th:src="${product.link}" alt="Image"/></div>
+
+                </td>
                 <td>
                     <form th:action="@{/admin/product/productedit(id=${product.id})}" method="post">
                         <button class="btn btn-primary" type="submit">Править</button>

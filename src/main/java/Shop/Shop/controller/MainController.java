@@ -2,6 +2,7 @@ package Shop.Shop.controller;
 
 import Shop.Shop.dto.UserDTO;
 import Shop.Shop.service.MyCategoryService;
+import Shop.Shop.service.MyProductService;
 import Shop.Shop.service.MyUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,13 @@ public class MainController {
     private final MyUserService myUserService;
     @Autowired
     private final MyCategoryService myCategoryService;
+    @Autowired
+    private final MyProductService myProductService;
     @GetMapping({"","/","index"})
 
     public String index(Model model) {
         model.addAttribute("categories", myCategoryService.findAll());
+        model.addAttribute("products", myProductService.getMyProducts());
         return "layout";
     }
     @GetMapping("/registration")
@@ -39,7 +43,7 @@ public class MainController {
         try {
             // Используем сервис для сохранения пользователя
             myUserService.save(user);
-            return "redirect:/success"; // Перенаправление после успешной регистрации
+            return "redirect:/login"; // Перенаправление после успешной регистрации
         } catch (IllegalArgumentException e) {
             model.addAttribute("errorMessage", e.getMessage());
             return "registration"; // Возвращаем на страницу регистрации с сообщением об ошибке

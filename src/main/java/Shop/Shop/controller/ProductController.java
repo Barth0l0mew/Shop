@@ -71,14 +71,37 @@ public class ProductController {
     public String editproduct(@RequestParam(name = "id") Long id, Model model) {
         System.out.println(id);
         Product product = myProductService.findById(id);
+        System.out.println("======productEdit======= "+product.toString());
         model.addAttribute("categories", myCategoryService.findAll());
         model.addAttribute("editProduct", product);
         model.addAttribute("page", "productedit");
         return "admin/index"; // имя вашего HTML-шаблона
     }
     @PostMapping("/product/saveProduct")
-    public String saveCategory( @RequestParam(name = "id") Long id, @ModelAttribute Product product) {
-        System.out.println("save product "+id+" "+product);
+    public String saveCategory( @RequestParam(name = "id") Long id, @RequestParam("file") MultipartFile file, @ModelAttribute Product product) {
+        System.out.println("save product "+id+" "+product.toString());
+        String fileName = file.getOriginalFilename();
+        System.out.println("fileName==========="+fileName+"    product image"+product.getLink());
+
+        if (!fileName.equals("")){
+
+            File uploadedDirectory = new File("src/main/resources/static/uploaded/");
+            System.out.println(uploadedDirectory);
+            try {
+                file.transferTo(new File(uploadedDirectory.getAbsolutePath() + "/" + fileName));
+                product.setLink("/uploaded/" + fileName);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else
+        {
+            product.setLink(myProductService.findById(product.getId()).getLink());
+        }
+        if (product.getLink()== null)
+            product.setLink("/image/not-found.png");
+        System.out.println("download product "+myProductService.findById(product.getId()).toString());
+        System.out.println("=====Final save produc "+product.toString());
         myProductService.saveProduct(product);
         return "redirect:/admin/product/productlist";
     }

@@ -1,12 +1,15 @@
 package Shop.Shop.controller;
 
 import Shop.Shop.dto.UserDTO;
+import Shop.Shop.model.Role;
 import Shop.Shop.model.User;
 import Shop.Shop.service.MyUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
 
 @Controller
 @RequestMapping("/admin")
@@ -29,15 +32,19 @@ public class UserController {
     @PostMapping("/editUser")
     public String editUser(@RequestParam(name = "id") Long id, Model model) {
         System.out.println(id);
+        System.out.println(Arrays.toString( Role.values()));
         User user = myUserService.findById(id);
         System.out.println(user.toString()+" ====  "+user.getRole().name());
         model.addAttribute("editUser", user);
+        model.addAttribute("role", Role.values());
         model.addAttribute("page", "useredit");
         return "admin/index"; // имя вашего HTML-шаблона
     }
 
     @PostMapping("/saveUser")
     public String saveUser(User user) {
+        System.out.println("save user====   "+user.toString());
+
         myUserService.saveUser(user);
         return "redirect:/admin/userslist";
     }

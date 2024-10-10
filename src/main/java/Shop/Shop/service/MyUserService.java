@@ -26,6 +26,7 @@ public class MyUserService {
         return myUserRepository.findById(id).orElse(null);
     }
     public void saveUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         myUserRepository.save(user);
     }
    public User findByUsernameAndPassword(String username, String password) {
