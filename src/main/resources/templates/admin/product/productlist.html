@@ -1,0 +1,60 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UserList</title>
+</head>
+<body>
+    <div th:fragment="productlist(productlist)" >
+        <h2>Список продуктов</h2>
+        <a class="newUser" href="/admin/product/addproduct"><h5>Создать новый продукт</h5></a>
+        <table>
+            <thead>
+            <tr>
+                <th class="first-column">ID</th>
+                <th class="middle-column">Название</th>
+                <th class="middle-column" >Цена</th>
+                <th class="middle-column">Описание</th>
+                <th class="middle-column">Категории</th>
+                <th class="middle-column">Ссылка</th>
+                <th class="middle-column">Картинка</th>
+                <th class="last-column">Править</th>
+                <th class="last-column">Удалить</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${productlist}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.title}"></td>
+                <td th:text="${product.price}"></td>
+                <td th:text="${product.description}"></td>
+
+                <td> <span th:each="category, iterStat  : ${product.categories}"
+                           th:text="${category.title} + ${!iterStat.last ? ', ' : ''}">Категория</span></td>
+                <td th:text="${product.link}"></td>
+                <td>
+                    <!--                    <img th:src="@{/image/not-found.png}" alt="Image"/>-->
+                    <div class="product__photo" > <img th:src="${product.link}" alt="Image"/></div>
+
+                </td>
+                <td>
+                    <form th:action="@{/admin/product/productedit(id=${product.id})}" method="post">
+                        <button class="btn btn-primary" type="submit">Править</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" th:action="@{/admin/product/deleteproduct(id=${product.id})}">
+                        <button class="btn btn-danger" type="submit">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/normalize.css}">
+
+    <title>Регистрация на сайте</title>
+
+</head>
+<body>
+
+    <div th:fragment="addProduct(newProduct,categories,errorMessage)">
+        <h2>Создание продукта</h2>
+        <div class="error-message" th:if="${errorMessage}">
+            <p th:text="${errorMessage}"></p>
+        </div>
+        <form th:action="@{/admin/product/registration}"
+              enctype="multipart/form-data"
+              method="post" th:object="${newProduct}">
+            <div class="form-group">
+                <label for="title">Название продукта:</label>
+                <input type="text" id="title" name="title" th:value="${newProduct.title}" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="description">Описание продукта:</label>
+                <input type="text" id="description" name="description" th:value="${newProduct.description}" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="price">Цена:</label>
+                <input type="text" id="price" name="price" th:value="${newProduct.price}" class="form-control"/>
+            </div>
+
+            <div class="form__category">
+                <h4>Список категорий</h4>
+                <div th:each="category : ${categories}">
+                    <label>
+                        <input type="checkbox" th:field="${newProduct.categories}" th:value="${category.id}" name="selectedCategories" />
+                        <span th:text="${category.title}">Категория</span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group files">
+                    <label>Выбрать картинку </label>
+                    <input type="file" class="form-control" multiple="" name="file">
+            </div>
+            <button type="submit" class="btn btn-success">Создать пользователя</button>
+        </form>
+    </div>
+
+
+
+</body>
+</html>

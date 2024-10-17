@@ -1,0 +1,43 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Useredit</title>
+</head>
+<body>
+    <div th:fragment="useredit(editUser,role)">
+        <h2>Редактирование пользователя</h2>
+        <form th:action="@{/admin/saveUser}" method="post">
+            <input type="hidden" th:name="id" th:value="${editUser.id}"/>
+            <div class="form-group">
+                <label for="username">Имя пользователя:</label>
+                <input type="text" id="username" name="username" th:value="${editUser.username}" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="email">Электронная почта:</label>
+                <input type="email" id="email" name="email" th:value="${editUser.email}" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" th:value="${editUser.password}" class="form-control"/>
+            </div>
+<!--            <div class="form-group">-->
+<!--                <label for="role">Роль:</label>-->
+<!--                <input type="text" id="role" name="role" th:value="${editUser.role}" class="form-control"/>-->
+<!--            </div>-->
+            <div class="form-group">
+                <label for="role">Роль:</label>
+                <select th:field="${editUser.role}" id="role">
+                    <option th:each="rol : ${role}" th:value="${rol}"  th:text="${rol}"></option>
+                </select>
+<!--                <input type="text" id="role" name="role" th:value="${editUser.role}" class="form-control"/>-->
+            </div>
+            <button type="submit" class="btn btn-success">Сохранить изменения</button>
+        </form>
+    </div>
+</body>
+</html>

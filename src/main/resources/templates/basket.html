@@ -1,0 +1,103 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Корзина</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/normalize.css}">
+    <style>
+        .first-column {
+            min-width: 50px; /* Ширина первой колонки */
+        }
+
+        .last-column {
+            width: 100px; /* Ширина последней колонки */
+        }
+        .middle-column {
+            width: 100px; /* Динамическая ширина */
+        }
+        .product__photo{
+            width: 50px;
+            height: 50px;
+
+        }
+        .product__photo img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div th:replace="menu2.html::menu(CartLink=${CartLink})"></div>
+    <!--        <div th:replace="menu.html"></div>-->
+</div>
+<section class="basket">
+    <div class="container">
+        <h2>Корзина</h2>
+        <div th:if="${products.isEmpty()}"><h3>Пусто</h3></div>
+        <div th:if="${!products.isEmpty()}">
+            <form th:action="@{/order}">
+                <table>
+                    <thead>
+                    <tr>
+                        <th class="first-column">ID</th>
+                        <th class="middle-column">Название</th>
+                        <th class="middle-column" >Цена</th>
+                        <th class="middle-column">Картинка</th>
+                        <th class="last-column">Удалить</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="product : ${products}">
+                        <td th:text="${product.id}"></td>
+                        <td th:text="${product.title}"></td>
+                        <td class="price" th:text="${product.price}"></td>
+                        <td>
+                            <div class="product__photo" > <img th:src="${product.link}" alt="Image"/></div>
+                        </td>
+                        <td>
+                            <form method="post" th:action="@{/deleteproduct(id=${product.id})}">
+                                <button  class="btn__sale btn btn-primary" type="submit">Удалить</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Сумма:</td>
+                        <td class="total">
+                        </td>
+                        <td> </td>
+                    </tr>
+                    </tbody>
+
+                </table>
+                <button type="submit" class="btn__sale btn btn-primary">Заказать</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+</body>
+<script th:inline="javascript">
+    const calculateTotalPrice = () => {
+        let total = 0;
+        const priceFields = document.querySelectorAll('.price');
+        const totalFields = document.querySelector('.total');
+
+        priceFields.forEach(field => {
+            total += parseFloat(field.textContent);
+        });
+
+        console.log(total);
+        totalFields.textContent = total;
+    }
+    calculateTotalPrice();
+</script>
+</html>

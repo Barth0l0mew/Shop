@@ -1,0 +1,49 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div th:fragment="menu(CartLink)">
+    <div class="menu">
+        <div class="menu__header">
+            <div class="menu__contact">+375-15-15-15-15</div>
+            <div class="menu__logo"> Happy Marry </div>
+            <div th:if="${!CartLink}" class="menu__registr">
+                <div class="menu__registration"><a href="/registration">Зарегистрироваться</a></div>
+                <div class="menu__login"><a href="/login">Войти</a></div>
+            </div>
+            <div th:if="${CartLink}">
+                <div class="menu__login"><a href="/logout">Выйте</a></div>
+                <div class="menu__logout"><a href="/basket">Корзина</a></div>
+            </div>
+        </div>
+        <div class="menu__footer">
+            <div class="menu__link">
+                <a href="/#catalog">Каталог</a>
+                <a href="/#about">О магазине</a>
+                <a href="/#footer">Контакты</a>
+            </div>
+            <div class="menu__social">
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+                    </a>
+                    <a href="https://twitter.com/" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg" alt="Twitter">
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

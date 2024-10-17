@@ -1,0 +1,254 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Административаня панель</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/normalize.css}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .sidebar {
+            background: #333;
+            color: white;
+            width: 250px;
+            min-height: 100vh;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h2 {
+            color: white;
+            text-align: center;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: #0056b3;
+        }
+
+        .main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .main h1 {
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form__category{
+            margin: 0 0 15px 0 ;
+
+
+        }
+        .form__category h4{
+            margin: 0;
+            padding: 5px 0 5px 0;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .product__photo{
+            width: 50px;
+            height: 50px;
+
+        }
+        .product__photo img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        table {
+            width: 100%;              /* Ширина таблицы 100% от родительского элемента */
+            border-collapse: collapse;/* Схлопывание границ таблицы */
+            max-width: 1000px;       /* Максимальная ширина ячейки 1000px */
+            table-layout: fixed;         /* Фиксируем таблицу для равномерного распределения ширины */
+        }
+
+        td {
+
+            white-space: nowrap;      /* Предотвращает перенос текста на новую строку */
+            overflow: hidden;         /* Скрывает переполненный текст */
+            text-overflow: ellipsis;  /* Добавляет троеточие к переполненному тексту */
+            border: 1px solid #ddd;   /* Граница ячейки для визуального отделения */
+            padding: 8px;             /* Отступы внутри ячейки */
+        }
+        /* Ширины колонок */
+        .first-column {
+            min-width: 50px; /* Ширина первой колонки */
+        }
+
+        .last-column {
+            width: 100px; /* Ширина последней колонки */
+        }
+
+        /* Для остальных колонок */
+        .middle-column {
+            width: calc((100% - 150px) / 6); /* Динамическая ширина */
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .newUser{
+            outline: none;
+            text-decoration: none;
+            color: rgb(119, 125, 139);
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .success-message {
+            color: green;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="sidebar">
+        <h2>Панель Администратора</h2>
+        <ul>
+            <li><a href="/">Главная</a></li>
+            <li><a href="/admin/userslist">Пользователи</a></li>
+            <li><a href="/admin/categorylist">Категории</a></li>
+            <li><a href="/admin/product/productlist">Продукты</a></li>
+            <li><a href="#">Заказы</a></li>
+            <li><a href="#">Нстройки</a></li>
+            <li><a href="#">Выход</a></li>
+        </ul>
+    </div>
+    <div class="main" onclick="return console.log (${page})">
+        <div th:if="${page}=='admin'">
+            <div th:replace="/admin/admin/admintitle::admintitle"></div>
+        </div>
+        <div th:if="${page}=='userlist'">
+                    <div  th:replace="/admin/users/userlist::userlist(users=${users})"></div>
+        </div>
+        <div th:if="${page}=='useredit'">
+            <div th:replace="/admin/users/useredit::useredit(editUser=${editUser},role=${role})"></div>
+        </div>
+        <div th:if="${page}=='adduser'">
+            <div th:replace="/admin/users/adduser::adduser(newUser=${newUser},errorMessage=${errorMessage})"></div>
+        </div>
+        <div th:if="${page}=='categorylist'">
+            <div th:replace="/admin/category/categorylist::categorylist(categories=${categories})"></div>
+        </div>
+        <div th:if="${page}=='addcategory'">
+            <div th:replace="/admin/category/addcategory::addcategory(newCategory=${newCategory},errorMessage=${errorMessage})"></div>
+        </div>
+        <div th:if="${page}=='categoryedit'">
+            <div th:replace="/admin/category/categoryedit::categoryedit(categoryedit=${categoryedit})"></div>
+        </div>
+        <div th:if="${page}=='productlist'">
+            <div th:replace="/admin/product/productlist::productlist(productlist=${productlist})"></div>
+        </div>
+        <div th:if="${page}=='addproduct'">
+            <div th:replace="/admin/product/addproduct::addProduct(newProduct=${newProduct},categories=${categories},errorMessage=${errorMessage})"></div>
+        </div>
+        <div th:if="${page}=='productedit'">
+            <div th:replace="/admin/product/productedit::productedit(editProduct=${editProduct},categories=${categories})"></div>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>

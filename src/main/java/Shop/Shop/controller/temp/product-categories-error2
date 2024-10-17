@@ -1,0 +1,31 @@
+pring boot jpa hibernate есть сущность
+@Entity
+@Table(name = "categories")
+public class Category {
+private static final String SEQ_NAME = "category_seq";
+@Id
+@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_NAME)
+@SequenceGenerator(name = SEQ_NAME, sequenceName = SEQ_NAME, allocationSize = 1)
+private Long id;
+private String title;}
+и сущность
+@Entity
+@Table(name = "products")
+public class Product {
+private static final String SEQ_NAME = "product_seq";
+@Id
+@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_NAME)
+@SequenceGenerator(name = SEQ_NAME, sequenceName = SEQ_NAME, allocationSize = 1)
+private Long id;
+private String title;
+private BigDecimal price;
+private String description;
+
+@ManyToMany (cascade = CascadeType.ALL)
+@JoinTable(
+name = "products_categorys",
+joinColumns = @JoinColumn(name = "product_id"),
+inverseJoinColumns = @JoinColumn(name = "category_id")
+)
+private List<Category> categories;}
+при удаление категории выдает ошибку Нарушение ссылочной целостности: "FKR4L7D23J9Y619ANODBYC20BM8: PUBLIC.PRODUCTS_CATEGORYS FOREIGN KEY(CATEGORY_ID) REFERENCES PUBLIC.CATEGORIES(ID) (CAST(1 AS BIGINT))" Referential integrity constraint violation: "FKR4L7D23J9Y619ANODBYC20BM8: PUBLIC.PRODUCTS_CATEGORYS FOREIGN KEY(CATEGORY_ID) REFERENCES PUBLIC.CATEGORIES(ID) (CAST(1 AS BIGINT))"

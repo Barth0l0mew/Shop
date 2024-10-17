@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Happy Mary</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/normalize.css}">
+
+</head>
+<body>
+<!--<div th:unless="${#authentication.principal.username}" class="menu__login"><a href="/login">Войти</a></div>-->
+<!--<div sec:authorize="isAuthenticated()">-->
+<!--    <span> hello</span>-->
+<!--    <span sec:authentication="principal.username">bill</span>-->
+<!--</div>-->
+<!--<div sec:authorize="!isAuthenticated()">-->
+<!--    <span> not user</span>-->
+<!--    <span sec:authentication="principal.username">bill</span>-->
+<!--</div>-->
+<!--<div th:if ="${#authentication.principal!=null}">-->
+<!--    <span th:text="${#authentication.principal.username}"></span>-->
+<!--</div>-->
+<!--<span th:text="${#authentication.principal}"></span>-->
+<div th:if ="${#authentication.principal=='anonymousUser'}">
+
+    <span >
+        <h2>anonim</h2>
+    </span>
+</div>
+<div th:unless="${#authentication.principal=='anonymousUser'}">
+    <span th:text="${#authentication.principal.username}"></span>
+<!--    <span th:text="${#authentication.principal.authorities}"></span>-->
+</div>
+    <div class="container">
+        <div th:replace="menu2.html::menu(CartLink=${CartLink})"></div>
+<!--        <div th:replace="menu.html"></div>-->
+    </div>
+
+    <section class="products">
+       <article id="catalog">
+           <div class="container">
+               <h2>Наши Товары</h2>
+               <div class="categories" >
+                <span class="category" th:each="category : ${categories}"
+                      th:text="${category.title}" ></span>
+               </div>
+
+               <div class="products__container">
+                   <div class="product-card" th:each="product:${products}">
+                       <img th:src="${product.link}" alt="Название товара" class="product-image">
+                       <div class="product-info">
+                           <h2 class="product-name" th:text="${product.title}">Название товара</h2>
+                           <a th:href="@{/product(id=${product.id})}" th:text="${product.title}" ></a>
+                           <p class="product-description" th:text="${product.description}">Краткое описание товара</p>
+                           <span class="product-price" th:text="${product.price}">Цена: 999 Р.</span>
+                           <div th:if="${CartLink}">
+
+                               <form th:action="@{/buy/product(id=${product.id})}" method="post">
+                                   <button class="btn__sale btn btn-primary" type="submit">Купить</button>
+                               </form>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+
+
+               <!--            <div class="product-card">-->
+               <!--                <img src="https://via.placeholder.com/200" alt="Название товара" class="product-image">-->
+               <!--                <div class="product-info">-->
+               <!--                    <h2 class="product-name">Название товара</h2>-->
+               <!--                    <p class="product-description">Краткое описание товара, его особенности и преимущества. Здесь можно указать дополнительные детали для покупателя.</p>-->
+               <!--                    <span class="product-price">Цена: 999 Р.</span>-->
+               <!--                </div>-->
+               <!--            </div>-->
+
+           </div>
+       </article>
+    </section>
+    <section class="about">
+        <article id="about">
+            <div class="container">
+                <h2>О магазине</h2>
+                <span class="about__title">
+            Интернет-магазин вязанных вещей – это уникальная платформа, где каждый может найти эксклюзивные, handmade изделия, созданные с любовью и вниманием к деталям. Мы предлагаем широкий ассортимент товаров, включая уютные свитера, стильные шарфы, мягкие шапки и креативные аксессуары для дома.
+</span>
+                <span class="about__title">
+                Наши изделия изготавливаются из качественных пряжи, что обеспечивает не только комфортное ношение, но и долговечность каждого товара. Мы заботимся об экологии, поэтому большинство наших материалов являются натуральными и экологически чистыми. Каждое изделие – это результат вдохновения и творческого подхода наших мастеров, которые стараются создать уникальные вещи, способные подчеркнуть индивидуальность каждого клиента.
+                </span>
+                    <span class="about__title">
+В нашем интернет-магазине вы также можете найти раздел с обучающими материалами для тех, кто хочет научиться вязать самостоятельно. Мы предлагаем советы по выбору пряжи, схемы и видеоуроки для начинающих вязальщиц.
+            </span>
+                <span class="about__title">
+                Мы гарантируем быструю доставку по всей стране и удобные способы оплаты. Наши клиенты всегда могут рассчитывать на высокий уровень сервиса, и в случае возникновения вопросов или необходимости обмена/возврата товара, наша команда всегда готова помочь.
+               </span>
+                <span class="about__title">
+Присоединяйтесь к нашему сообществу любителей вязания, находите вдохновение в наших коллекциях и создавайте свой уникальный стиль с помощью вязанных изделий!
+        </span>
+            </div>
+        </article>
+    </section>
+    <section class="carta">
+        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A220e4358201623884b21b5777fcb2fb39561d81a034e1d7d97590d256e6cb4b9&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
+    </section>
+    <section class="reviews">
+        <div class="container">
+            <h2>Отзывы</h2>
+            <p>Здесь будут отзывы пользователей.</p>
+            <!-- Добавьте отзывы здесь -->
+        </div>
+    </section>
+
+    <footer class="footer">
+        <article id="footer">
+            <p>&copy; 2024 Мой Магазин. Все права защищены.</p>
+        </article>
+
+    </footer>
+
+
+</body>
+</html>

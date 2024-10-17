@@ -1,0 +1,54 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Useredit</title>
+</head>
+<body>
+    <div th:fragment="productedit(editProduct,categories)">
+        <h2>Редактирование продукта</h2>
+        <form th:action="@{/admin/product/saveProduct(id=${editProduct.id})}"
+              th:object="${editProduct}"
+              enctype="multipart/form-data"
+              method="post">
+            <h2 th:text="${editProduct.id}"></h2>
+            <div class="form-group">
+                <label for="title">Название продукта:</label>
+                <input type="text" id="title" name="title" th:value="${editProduct.title}" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="description">Описание продукта:</label>
+                <input type="text" id="description" name="description" th:value="${editProduct.description}" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="price">Цена:</label>
+                <input type="text" id="price" name="price" th:value="${editProduct.price}" class="form-control"/>
+            </div>
+
+            <div class="form__category">
+                <h4>Список категорий</h4>
+                <div th:each="category : ${categories}">
+                    <label>
+                        <input type="checkbox" th:field="${editProduct.categories}" th:value="${category.id}" name="selectedCategories" />
+                        <span th:text="${category.title}">Категория</span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="product__photo">
+                    <img th:src="${editProduct.link}" alt="">
+                </div>
+                <div class="form-group files">
+                    <label>Выбрать картинку для изменения  </label>
+                    <input type="file" class="form-control" multiple="" name="file">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Cохраниь пордукт</button>
+        </form>
+    </div>
+</body>
+</html>

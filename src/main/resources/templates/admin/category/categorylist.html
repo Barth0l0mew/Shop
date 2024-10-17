@@ -1,0 +1,41 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UserList</title>
+</head>
+<body>
+    <div th:fragment="categorylist(categories)" >
+        <h2>Список категорий</h2>
+        <a class="newUser" href="/admin/addCategory"><h5>Создать новую категорию</h5></a>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Название категории</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="category : ${categories}">
+                <td th:text="${category.id}"></td>
+                <td th:text="${category.title}"></td>
+                <td>
+                    <form th:action="@{/admin/category/categoryedit(id=${category.id})}" method="post">
+                        <button class="btn btn-primary" type="submit">Править</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" th:action="@{/admin/category/deletecategory(id=${category.id})}">
+                        <button class="btn btn-danger" type="submit">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
