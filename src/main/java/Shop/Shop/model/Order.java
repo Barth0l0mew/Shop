@@ -34,7 +34,7 @@ public class Order {
 //    private User user;
 
     private String products;
-    private BigDecimal sum;
+    private BigDecimal sumPrice;
     private String address;
 //    @OneToMany (cascade = CascadeType.ALL)
 //    private List<OrderDetail> details;
