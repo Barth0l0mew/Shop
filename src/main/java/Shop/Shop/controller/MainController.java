@@ -34,8 +34,7 @@ public class MainController {
 
     @GetMapping({"","/","index"})
        public String index(Model model, @AuthenticationPrincipal UserDetails userDetails) {
-        //Authentication authentication
-        // @AuthenticationPrincipal UserDetails userDetails
+
         if (userDetails!=null) {
             System.out.println("UserDEtails ===== "+userDetails.getUsername());
             model.addAttribute("CartLink", true);
@@ -136,6 +135,7 @@ public class MainController {
     @PostMapping ("/order")
     public String order(@AuthenticationPrincipal UserDetails userDetails, Model model) {
         User user = myUserService.findByUser(userDetails.getUsername());
+        System.out.println("order user "+user.toString());
         myOrderService.save(user);
         return "redirect:/index";
     }

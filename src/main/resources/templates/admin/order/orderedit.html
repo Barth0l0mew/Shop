@@ -1,0 +1,59 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OrderEdit</title>
+</head>
+<body>
+    <div th:fragment="orderedit(orderedit)">
+        <h2>Просмотр заказа</h2>
+        <form th:action="@{/admin/saveUser}" method="post">
+            <table>
+                <thead>
+                <tr>
+                    <th style="width: 200px">Параметр</th>
+                    <th>Описание</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="td__id"> ID</td>
+                    <td th:text="${orderedit.id}"></td>
+                </tr>
+                <tr>
+                    <td> Дата создания заказа</td>
+                    <td th:text="${orderedit.created}"></td>
+                </tr>
+                <tr>
+                    <td> Дата последнего редактирвоания</td>
+                    <td th:text="${orderedit.update}"></td>
+                </tr>
+                <tr>
+                    <td> Список продуктов</td>
+                    <td th:text="${orderedit.products}"></td>
+<!--                    <div th:each="part : ${#strings.split(orderedit.products, ', ')}" th:text="${part}"></div>-->
+
+                </tr>
+                <tr>
+                    <td> Сумма заказа</td>
+                    <td th:text="${orderedit.sumPrice}"></td>
+                </tr>
+                <tr>
+                    <td> Контакт</td>
+                    <td th:text="${orderedit.address}"></td>
+                </tr>
+                <tr>
+                    <td> Статус</td>
+                    <td th:text="${orderedit.status}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

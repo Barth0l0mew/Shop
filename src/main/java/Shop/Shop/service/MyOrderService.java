@@ -7,11 +7,13 @@ import Shop.Shop.dao.MyUserRepository;
 import Shop.Shop.dto.ProductDTO;
 import Shop.Shop.model.Order;
 import Shop.Shop.model.Product;
+import Shop.Shop.model.Status;
 import Shop.Shop.model.User;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -41,14 +43,19 @@ public class MyOrderService {
                 .address(user.getEmail())
                 .products(
                         user.getProducts().stream()
-                                .map(Product::getTitle)
+                                .map(product -> product.getId()+"-"+product.getTitle())
                                 .collect(Collectors.joining(", "))
                 )
-
-
+                .sumPrice(user.getProducts().stream()
+                        .map(Product::getPrice)
+                        .reduce(BigDecimal.ZERO, BigDecimal::add))
+                .status(Status.NEW)
                 .build();
-
-        return  myOrderRepository.save(order);
+        System.out.println("Order=== "+order.toString());
+        Order savedOrder = myOrderRepository.save(order);
+        user.setProducts(null);
+        myUserRepository.save(user);
+        return  savedOrder;
     }
     @Transactional
     public void deleteProduct(Product product) {

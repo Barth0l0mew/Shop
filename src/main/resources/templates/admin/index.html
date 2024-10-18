@@ -187,6 +187,9 @@
             font-size: 1.1em;
             margin-bottom: 15px;
         }
+        .td__id{
+            white-space: pre-wrap;
+        }
 
 
 
@@ -210,7 +213,7 @@
             <li><a href="/admin/userslist">Пользователи</a></li>
             <li><a href="/admin/categorylist">Категории</a></li>
             <li><a href="/admin/product/productlist">Продукты</a></li>
-            <li><a href="#">Заказы</a></li>
+            <li><a href="/admin/order/orderlist">Заказы</a></li>
             <li><a href="#">Нстройки</a></li>
             <li><a href="#">Выход</a></li>
         </ul>
@@ -245,6 +248,12 @@
         </div>
         <div th:if="${page}=='productedit'">
             <div th:replace="/admin/product/productedit::productedit(editProduct=${editProduct},categories=${categories})"></div>
+        </div>
+        <div th:if="${page}=='orderlist'">
+            <div th:replace="/admin/order/orderlist::orderlist(orders=${orders})"></div>
+        </div>
+        <div th:if="${page}=='orderedit'">
+            <div th:replace="/admin/order/orderedit::orderedit(orderedit=${orderedit})"></div>
         </div>
 
     </div>

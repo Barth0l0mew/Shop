@@ -61,6 +61,7 @@ public class SecurityConfig {
                                 "/static/uploaded/**",
                                 "/uploaded/**",
                                 "/admin/product/productedit",
+                                "/admin/order/**",
                                 "/buy/**",
                                 "/buy/product",
                                 "/basket",

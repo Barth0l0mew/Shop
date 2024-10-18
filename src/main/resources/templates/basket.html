@@ -34,7 +34,7 @@
 </head>
 <body>
 <div class="container">
-    <div th:replace="menu2.html::menu(CartLink=${CartLink})"></div>
+    <div th:replace="~{menu2.html::menu(CartLink=${CartLink})}"></div>
     <!--        <div th:replace="menu.html"></div>-->
 </div>
 <section class="basket">
@@ -42,7 +42,7 @@
         <h2>Корзина</h2>
         <div th:if="${products.isEmpty()}"><h3>Пусто</h3></div>
         <div th:if="${!products.isEmpty()}">
-            <form th:action="@{/order}">
+            <form th:action="@{/order}" method="post">
                 <table>
                     <thead>
                     <tr>

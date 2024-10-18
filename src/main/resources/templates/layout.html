@@ -10,19 +10,7 @@
 
 </head>
 <body>
-<!--<div th:unless="${#authentication.principal.username}" class="menu__login"><a href="/login">Войти</a></div>-->
-<!--<div sec:authorize="isAuthenticated()">-->
-<!--    <span> hello</span>-->
-<!--    <span sec:authentication="principal.username">bill</span>-->
-<!--</div>-->
-<!--<div sec:authorize="!isAuthenticated()">-->
-<!--    <span> not user</span>-->
-<!--    <span sec:authentication="principal.username">bill</span>-->
-<!--</div>-->
-<!--<div th:if ="${#authentication.principal!=null}">-->
-<!--    <span th:text="${#authentication.principal.username}"></span>-->
-<!--</div>-->
-<!--<span th:text="${#authentication.principal}"></span>-->
+
 <div th:if ="${#authentication.principal=='anonymousUser'}">
 
     <span >
@@ -51,10 +39,11 @@
                    <div class="product-card" th:each="product:${products}">
                        <img th:src="${product.link}" alt="Название товара" class="product-image">
                        <div class="product-info">
-                           <h2 class="product-name" th:text="${product.title}">Название товара</h2>
-                           <a th:href="@{/product(id=${product.id})}" th:text="${product.title}" ></a>
+<!--                           <h2 class="product-name" th:text="${product.title}">Название товара</h2>-->
+<!--                           <a th:href="@{/product(id=${product.id})}" th:text="${product.title}" ></a>-->
+                           <a th:href="@{/product(id=${product.id})}"  ><h2 class="product-name" th:text="${product.title}">Название товара</h2></a>
                            <p class="product-description" th:text="${product.description}">Краткое описание товара</p>
-                           <span class="product-price" th:text="${product.price}">Цена: 999 Р.</span>
+                           <span class="product-price" th:text="'Цена: ' + ${product.price} + ' р.'">Цена: 999 Р.</span>
                            <div th:if="${CartLink}">
 
                                <form th:action="@{/buy/product(id=${product.id})}" method="post">

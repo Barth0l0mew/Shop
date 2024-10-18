@@ -1,0 +1,46 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UserList</title>
+</head>
+<body>
+    <div th:fragment="orderlist(orders)" >
+        <h2>Список заказлв</h2>
+        <table>
+            <thead>
+            <tr>
+                <th class="first-column">ID</th>
+                <th>Дата создания</th>
+                <th>Дата редактирования</th>
+                <th>Товар</th>
+                <th>Стоимость</th>
+                <th>Контакт</th>
+                <th>Статус</th>
+                <th style="width: 140px">Изменить</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="order : ${orders}">
+                <td th:text="${order.id}"></td>
+                <td th:text="${order.created}"></td>
+                <td th:text="${order.update}"></td>
+                <td th:text="${order.products}"></td>
+                <td th:text="${order.sumPrice}"></td>
+                <td th:text="${order.address}"></td>
+                <td th:text="${order.status}"></td>
+                <td>
+                    <form th:action="@{/admin/order/orderedit(id=${order.id})}" method="post">
+                        <button class="btn btn-primary" type="submit">Просмотреть</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
