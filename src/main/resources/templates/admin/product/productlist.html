@@ -6,7 +6,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>UserList</title>
+
+    <title>ProductList</title>
 </head>
 <body>
     <div th:fragment="productlist(productlist)" >
@@ -28,7 +29,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="product : ${productlist}">
+            <tr th:each="product : ${productlist.content}">
                 <td th:text="${product.id}"></td>
                 <td th:text="${product.title}"></td>
                 <td th:text="${product.price}"></td>
@@ -55,6 +56,28 @@
             </tr>
             </tbody>
         </table>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li class="page-item" th:if="(${productlist.number}-1)>=0" th:class="${productlist.hasPrevious()} ? '' : 'disabled'">
+                    <a class="page-link" th:href="@{/admin/product/productlist(page=${productlist.number - 1})}">Назад</a>
+                    <!--                <a class="page-link" th:href="@{${'productlist2?page=${productPage.number - 1})'}}">Назад</a>-->
+                </li>
+                <li class="page-item" th:if="${productlist.hasPrevious()}">
+                    <a class="page-link" th:href="@{${'productlist?page=0'}}">В начало</a>
+                </li>
+                <!--            <li class="page-item disabled"><span class="page-link">...</span></li>-->
+                <li class="page-item" th:each="i : ${#numbers.sequence(productlist.number - 1, productlist.number + 1)}"
+                    th:if="${i >= 0 && i < productlist.totalPages}">
+                    <a class="page-link" th:href="@{${'productlist?page=' + i }}" th:text="${i + 1}"></a>
+                </li>
+                <li class="page-item" th:if="${productlist.hasNext()}">
+                    <a class="page-link" th:href="@{${'productlist?page=' + (productlist.number + 1) }}">Вперед</a>
+                </li>
+                <li class="page-item" th:if="${productlist.hasNext()}">
+                    <a class="page-link" th:href="@{${'productlist?page=' + (productlist.totalPages - 1) }}">В конец</a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </body>
 </html>

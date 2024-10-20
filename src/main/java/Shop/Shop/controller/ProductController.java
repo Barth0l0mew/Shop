@@ -23,18 +23,19 @@ public class ProductController {
     private MyProductService myProductService;
     @Autowired
     private MyCategoryService myCategoryService;
-    @GetMapping ("/product/productlist")
-    public String productList(Model model){
-        model.addAttribute("page","productlist");
-        System.out.println(myProductService.getMyProducts());
-        model.addAttribute("productlist",myProductService.getMyProducts());
-        return "admin/index";
-    }
-    @GetMapping("/product/productlist2")
+//    @GetMapping ("/product/productlist")
+//    public String productList(Model model){
+//        model.addAttribute("page","productlist");
+//        System.out.println(myProductService.getMyProducts());
+//        model.addAttribute("productlist",myProductService.getMyProducts());
+//        return "admin/index";
+//    }
+    @GetMapping("/product/productlist")
     public String listProducts(@RequestParam(defaultValue = "0") int page, Model model) {
+        model.addAttribute("page","productlist");
         Page<Product> productPage = myProductService.findPaginated(page, 3); // 10 продуктов на странице
-        model.addAttribute("productPage", productPage);
-        return "admin/productlist"; // возвращает имя шаблона
+        model.addAttribute("productlist", productPage);
+        return "admin/index"; // возвращает имя шаблона
     }
 
 

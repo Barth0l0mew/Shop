@@ -9,6 +9,7 @@
     <title>Административаня панель</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/normalize.css}">
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -195,6 +196,24 @@
             width: 100%;
             height: 300px;
         }
+        .pagination{
+            display: flex;
+            flex-direction: row;
+            list-style-type: none;
+        }
+        .pagination li{
+            padding: 5px 10px;
+            border: 1px solid #666666;
+            display: inline;
+
+            border-radius: 5px;
+            margin: 5px;
+            background-color: #007bff;
+        }
+        .pagination li >a{
+            color: #f1f1f1;
+        }
+
 
 
 
