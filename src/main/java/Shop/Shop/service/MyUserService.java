@@ -37,6 +37,7 @@ public class MyUserService {
         if (!userOld.getPassword().equals(user.getPassword())) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
         }
+        user.setProducts(userOld.getProducts());
         myUserRepository.save(user);
     }
     public User findByUser(String username) {
@@ -65,13 +66,7 @@ public class MyUserService {
         if (!Objects.equals(userDTO.getPassword(), userDTO.getMatchingPassword())) {
             throw new IllegalArgumentException("Неверный пароль");
         }else {
-            // Basket basket =  Basket.builder().build();
-           // Basket basket = myBasketRepository.save(Basket.builder().build());
-          //  Basket basket = Basket.builder().build();
-           // System.out.println("new basket "+basket.toString());
-            //myBasketRepository.save(basket);
-            //Basket basketNew = myBasketRepository.findById(Long.valueOf(myBasketRepository.findAll().size())).orElse(null);
-            //System.out.println();
+
             Basket basket =  Basket.builder().title("title1").build();
             User user = User.builder()
                     .username(userDTO.getUsername())
@@ -79,28 +74,13 @@ public class MyUserService {
                     .archive(false)
                     .email(userDTO.getEmail())
                     .role(Role.USER)
-                  //  .basket(basket)
+
                     .products(null)
                     .build();
-          //  user.getBasket().setUser(user);
-           // basket.setUser(user);
 
-            //user.setBasket(basket);
-            //myBasketRepository.save(basket);
-            /*System.out.println("=== "+myBasketRepository.save(basket));
-            user.setBasket(basket);
-            */
-            //System.out.println("=== "+myBasketRepository.save(basket));
-           // basket.setUser(user);
-           // myBasketRepository.save(basket);
            User user1 = myUserRepository.save(user);
             System.out.println("user1 "+user1.toString());
-            //user1.getBasket().setUser(user);
-            //System.out.println("user 1 "+ myUserRepository.save(user1));
-            //  myBasketRepository.save(basket);
 
-          //  myBasketRepository.save(basket);
-          // return myUserRepository.save(user);
             return user;
             }
     }

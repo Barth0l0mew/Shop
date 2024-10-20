@@ -46,6 +46,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth->auth
                         .requestMatchers("/",
                                 "/index",
+                                "/filter",
                                 "/h2-console/**",
                                 "/css/**",
                                 "/registration",
@@ -66,7 +67,8 @@ public class SecurityConfig {
                                 "/buy/product",
                                 "/basket",
                                 "/deleteproduct",
-                                "/order").authenticated())
+                                "/order",
+                                "/send").authenticated())
                 //.formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
                 .formLogin(form->form
                         .loginPage("/login")

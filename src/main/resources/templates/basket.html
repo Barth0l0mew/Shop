@@ -39,6 +39,9 @@
 </div>
 <section class="basket">
     <div class="container">
+        <div class="error-message" th:if="${errorMessage}">
+            <p th:text="${errorMessage}"></p>
+        </div>
         <h2>Корзина</h2>
         <div th:if="${products.isEmpty()}"><h3>Пусто</h3></div>
         <div th:if="${!products.isEmpty()}">

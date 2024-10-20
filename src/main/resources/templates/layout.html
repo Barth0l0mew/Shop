@@ -11,16 +11,16 @@
 </head>
 <body>
 
-<div th:if ="${#authentication.principal=='anonymousUser'}">
+<!--<div th:if ="${#authentication.principal=='anonymousUser'}">-->
 
-    <span >
-        <h2>anonim</h2>
-    </span>
-</div>
-<div th:unless="${#authentication.principal=='anonymousUser'}">
-    <span th:text="${#authentication.principal.username}"></span>
-<!--    <span th:text="${#authentication.principal.authorities}"></span>-->
-</div>
+<!--    <span >-->
+<!--        <h2>anonim</h2>-->
+<!--    </span>-->
+<!--</div>-->
+<!--<div th:unless="${#authentication.principal=='anonymousUser'}">-->
+<!--    <span th:text="${#authentication.principal.username}"></span>-->
+<!--&lt;!&ndash;    <span th:text="${#authentication.principal.authorities}"></span>&ndash;&gt;-->
+<!--</div>-->
     <div class="container">
         <div th:replace="menu2.html::menu(CartLink=${CartLink})"></div>
 <!--        <div th:replace="menu.html"></div>-->
@@ -31,8 +31,11 @@
            <div class="container">
                <h2>Наши Товары</h2>
                <div class="categories" >
+                   <span class="category"> <a href="/">Все</a></span>
                 <span class="category" th:each="category : ${categories}"
-                      th:text="${category.title}" ></span>
+                      >
+                    <a th:href="@{/filter(filter=${category.id})}" th:text="${category.title}" ></a>
+                </span>
                </div>
 
                <div class="products__container">

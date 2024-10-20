@@ -10,8 +10,12 @@ import Shop.Shop.model.Product;
 import Shop.Shop.model.User;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+//import org.hibernate.query.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +35,19 @@ public class MyProductService {
         return myProductRepository.findById(id).orElse(null);
     }
 
+    public Page<Product> findPaginated(int page, int size) {
+        return myProductRepository.findAll(PageRequest.of(page, size));
+    }
+    public List<Product> findByCategory(Long filter) {
+        List<Product> products = new ArrayList<>();
+        for (Product product : myProductRepository.findAll()) {
+            for (Category category : product.getCategories()) {
+                if (category.getId()==filter)
+                    products.add(product);
+            }
+        }
+        return products;
+    }
     public Product save(ProductDTO productDTO) {
         System.out.println("mcategory service "+productDTO.toString());
             Product product = Product.builder()

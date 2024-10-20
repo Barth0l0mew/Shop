@@ -2,12 +2,11 @@ package Shop.Shop.controller;
 
 import Shop.Shop.dto.UserDTO;
 import Shop.Shop.model.Basket;
+import Shop.Shop.model.Email;
 import Shop.Shop.model.Product;
 import Shop.Shop.model.User;
-import Shop.Shop.service.MyCategoryService;
-import Shop.Shop.service.MyOrderService;
-import Shop.Shop.service.MyProductService;
-import Shop.Shop.service.MyUserService;
+import Shop.Shop.service.*;
+import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -18,7 +17,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -31,6 +35,8 @@ public class MainController {
     private final MyProductService myProductService;
     @Autowired
     private final MyOrderService myOrderService;
+    @Autowired
+    private EmailService emailService;
 
     @GetMapping({"","/","index"})
        public String index(Model model, @AuthenticationPrincipal UserDetails userDetails) {
@@ -49,6 +55,21 @@ public class MainController {
         model.addAttribute("products", myProductService.getMyProducts());
         return "layout";
     }
+    @GetMapping("/filter")
+    public String productFilter(@RequestParam(name= "filter") Long filter,  Model model, @AuthenticationPrincipal UserDetails userDetails) {
+        if (userDetails!=null) {
+            System.out.println("UserDEtails ===== "+userDetails.getUsername());
+            model.addAttribute("CartLink", true);
+            System.out.println("cartlink "+true);
+        } else
+        {
+            model.addAttribute("CartLink", false);
+        }
+        model.addAttribute("categories", myCategoryService.findAll());
+        model.addAttribute("products", myProductService.findByCategory(filter));
+        return "layout";
+    }
+
     @GetMapping("/registration")
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new UserDTO()); // Создание нового объекта пользователя
@@ -133,8 +154,32 @@ public class MainController {
         return "redirect:/basket";
     }
     @PostMapping ("/order")
-    public String order(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+    public String order(@AuthenticationPrincipal UserDetails userDetails, Model model) throws MessagingException {
         User user = myUserService.findByUser(userDetails.getUsername());
+
+       try {
+           Email email = new Email();
+           email.setTo(user.getEmail());
+           email.setFrom("barth0l0mew@mail.ru");
+           email.setSubject("Онлайн заказ");
+           email.setTemplate("email.html");
+           Map<String, Object> properties = new HashMap<>();
+           properties.put("name", user.getUsername());
+           properties.put("subscriptionDate", LocalDate.now().toString());
+           properties.put("products", user.getProducts());
+           properties.put("totatPrice",user.getProducts().stream()
+                   .map(Product::getPrice)
+                   .reduce(BigDecimal.ZERO, BigDecimal::add));
+           email.setProperties(properties);
+           emailService.sendHtmlMessage(email);
+
+       } catch (Exception e) {
+           System.out.println("Неверный email address");
+           model.addAttribute("errorMessage", "Неверный email address");
+           model.addAttribute("CartLink", true);
+           model.addAttribute("products", user.getProducts());
+           return "basket";
+       }
         System.out.println("order user "+user.toString());
         myOrderService.save(user);
         return "redirect:/index";

@@ -6,6 +6,7 @@ import Shop.Shop.model.Category;
 import Shop.Shop.model.Product;
 import Shop.Shop.service.MyCategoryService;
 import Shop.Shop.service.MyProductService;
+import org.springframework.data.domain.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +30,14 @@ public class ProductController {
         model.addAttribute("productlist",myProductService.getMyProducts());
         return "admin/index";
     }
+    @GetMapping("/product/productlist2")
+    public String listProducts(@RequestParam(defaultValue = "0") int page, Model model) {
+        Page<Product> productPage = myProductService.findPaginated(page, 3); // 10 продуктов на странице
+        model.addAttribute("productPage", productPage);
+        return "admin/productlist"; // возвращает имя шаблона
+    }
+
+
     @GetMapping("/product/addproduct")
     public String showRegistrationForm(Model model) {
         model.addAttribute("page", "addproduct");

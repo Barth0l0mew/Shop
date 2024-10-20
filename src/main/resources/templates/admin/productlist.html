@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Продукты</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Цена</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${productPage.content}">
+            <td th:text="${product.id}">1</td>
+            <td th:text="${product.title}">Product Name</td>
+            <td th:text="${product.price}">100.00</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li class="page-item" th:if="(${productPage.number}-1)>=0" th:class="${productPage.hasPrevious()} ? '' : 'disabled'">
+                <a class="page-link" th:href="@{/admin/product/productlist2(page=${productPage.number - 1})}">Назад</a>
+<!--                <a class="page-link" th:href="@{${'productlist2?page=${productPage.number - 1})'}}">Назад</a>-->
+            </li>
+            <li class="page-item" th:if="${productPage.hasPrevious()}">
+                <a class="page-link" th:href="@{${'productlist2?page=0'}}">В начало</a>
+            </li>
+<!--            <li class="page-item disabled"><span class="page-link">...</span></li>-->
+            <li class="page-item" th:each="i : ${#numbers.sequence(productPage.number - 1, productPage.number + 1)}"
+                th:if="${i >= 0 && i < productPage.totalPages}">
+                <a class="page-link" th:href="@{${'productlist2?page=' + i }}" th:text="${i + 1}"></a>
+            </li>
+            <li class="page-item" th:if="${productPage.hasNext()}">
+                <a class="page-link" th:href="@{${'productlist2?page=' + (productPage.number + 1) }}">Вперед</a>
+            </li>
+            <li class="page-item" th:if="${productPage.hasNext()}">
+                <a class="page-link" th:href="@{${'productlist2?page=' + (productPage.totalPages - 1) }}">В конец</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+</body>
+</html>

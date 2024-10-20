@@ -1,4 +1,10 @@
 spring:
+  resources:
+    cache:
+      enabled: false
+  devtools:
+    restart:
+      enabled: true
   security:
     user:
       name: user
@@ -28,3 +34,24 @@ spring:
       enabled: true
   flyway:
     baseline-on-migrate: false
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+  mail:
+    default-encoding: UTF-8
+    host: smtp.mail.ru
+    port: 465
+    username: barth0l0mew@mail.ru
+    password: rvwwLPiqksc9kNqBbD60
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+          starttls:
+            enable: true
+        debug: true
+    protocol: smtp
+    test-connection: false
