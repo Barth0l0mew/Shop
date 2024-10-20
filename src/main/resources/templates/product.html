@@ -72,14 +72,14 @@
                    <div class="product-title" th:text="${product.title}"></div>
                    <div class="product-price" th:text="'Цена: ' + ${product.price} + ' р.'"></div>
                    <div th:if="${CartLink}">
-                       <form th:action="@{/buy/${product.id}}" method="post">
+                       <form th:action="@{/buy/product(id=${product.id})}" method="post">
                            <button class="btn__sale btn btn-primary" type="submit">Купить</button>
                        </form>
                    </div>
                </div>
             </div>
             <h2>Описание товара</h2>
-            <div class="product__description" th:text="${product.description}"></div>
+            <div class="product__description" th:utext="${product.description}"></div>
         </div>
     </div>
 </section>

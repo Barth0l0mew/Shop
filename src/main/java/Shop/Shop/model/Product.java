@@ -28,6 +28,7 @@ public class Product {
     private Long id;
     private String title;
     private BigDecimal price;
+    @Column(columnDefinition="TEXT")
     private String description;
     private String link;
     @ManyToMany (cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)

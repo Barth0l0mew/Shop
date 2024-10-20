@@ -1,5 +1,5 @@
 package Shop.Shop.model;
 
 public enum Status {
-    NEW, APPROVED, CANSELED, ClOSED, PAID
+    NEW, APPROVED, CANSELED, ClOSED, PAID, SENT
 }

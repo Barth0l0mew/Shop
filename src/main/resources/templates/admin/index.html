@@ -190,6 +190,11 @@
         .td__id{
             white-space: pre-wrap;
         }
+        textarea {
+            overflow: auto;
+            width: 100%;
+            height: 300px;
+        }
 
 
 
@@ -253,7 +258,7 @@
             <div th:replace="/admin/order/orderlist::orderlist(orders=${orders})"></div>
         </div>
         <div th:if="${page}=='orderedit'">
-            <div th:replace="/admin/order/orderedit::orderedit(orderedit=${orderedit})"></div>
+            <div th:replace="/admin/order/orderedit::orderedit(orderedit=${orderedit},status=${status})"></div>
         </div>
 
     </div>

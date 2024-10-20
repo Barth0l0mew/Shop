@@ -42,7 +42,7 @@
 <!--                           <h2 class="product-name" th:text="${product.title}">Название товара</h2>-->
 <!--                           <a th:href="@{/product(id=${product.id})}" th:text="${product.title}" ></a>-->
                            <a th:href="@{/product(id=${product.id})}"  ><h2 class="product-name" th:text="${product.title}">Название товара</h2></a>
-                           <p class="product-description" th:text="${product.description}">Краткое описание товара</p>
+                           <p class="product-description" th:utext="${product.description}">Краткое описание товара</p>
                            <span class="product-price" th:text="'Цена: ' + ${product.price} + ' р.'">Цена: 999 Р.</span>
                            <div th:if="${CartLink}">
 

@@ -1,15 +1,11 @@
 package Shop.Shop.controller;
 
-import Shop.Shop.model.Order;
-import Shop.Shop.model.Product;
+import Shop.Shop.model.*;
 import Shop.Shop.service.MyOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/admin")
@@ -29,7 +25,14 @@ public class OrderController {
         Order order = myOrderService.findById(id);
         System.out.println("======orderEdit======= " + order.toString());
         model.addAttribute("orderedit", order);
+        model.addAttribute("status", Status.values());
         model.addAttribute("page", "orderedit");
         return "admin/index"; // имя вашего HTML-шаблона
+    }
+    @PostMapping("/order/saveorder")
+    public String saveorder(@ModelAttribute("orderedit")  Order order, Model model) {
+        System.out.println("save order====   "+order.toString());
+        myOrderService.saveOrder(order);
+        return "redirect:/admin/order/orderlist";
     }
 }

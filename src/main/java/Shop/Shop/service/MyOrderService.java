@@ -69,4 +69,12 @@ public class MyOrderService {
         myProductRepository.save(Product);
 
     }
+    public void saveOrder(Order order) {
+        if (findById(order.getId()).hashCode() != order.hashCode()) {
+            order.setUpdate(LocalDateTime.now());
+            myOrderRepository.save(order);
+            System.out.println("!=");
+        }
+
+    }
 }
