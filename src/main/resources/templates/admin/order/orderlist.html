@@ -25,7 +25,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="order : ${orders}">
+            <tr th:each="order : ${orders.content}">
                 <td th:text="${order.id}"></td>
                 <td th:text="${order.created}"></td>
                 <td th:text="${order.update}"></td>
@@ -41,6 +41,28 @@
             </tr>
             </tbody>
         </table>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li class="page-item" th:if="(${orders.number}-1)>=0" th:class="${orders.hasPrevious()} ? '' : 'disabled'">
+                    <a class="page-link" th:href="@{/admin/order/orderlist(page=${orders.number - 1})}">Назад</a>
+                    <!--                <a class="page-link" th:href="@{${'productlist2?page=${productPage.number - 1})'}}">Назад</a>-->
+                </li>
+                <li class="page-item" th:if="${orders.hasPrevious()}">
+                    <a class="page-link" th:href="@{${'orderlist?page=0'}}">В начало</a>
+                </li>
+                <!--            <li class="page-item disabled"><span class="page-link">...</span></li>-->
+                <li class="page-item" th:each="i : ${#numbers.sequence(orders.number - 1, orders.number + 1)}"
+                    th:if="${i >= 0 && i < orders.totalPages}">
+                    <a class="page-link" th:href="@{${'orderlist?page=' + i }}" th:text="${i + 1}"></a>
+                </li>
+                <li class="page-item" th:if="${orders.hasNext()}">
+                    <a class="page-link" th:href="@{${'orderlist?page=' + (orders.number + 1) }}">Вперед</a>
+                </li>
+                <li class="page-item" th:if="${orders.hasNext()}">
+                    <a class="page-link" th:href="@{${'orderlist?page=' + (orders.totalPages - 1) }}">В конец</a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </body>
 </html>

@@ -12,7 +12,9 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 //import org.hibernate.query.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -47,6 +49,31 @@ public class MyProductService {
             }
         }
         return products;
+    }
+    public Page<Product> findPaginatedByCategory(Long filter, int page, int size) {
+
+        //return myProductRepository.findByCategory(myCategoryRepository.findById(filter).orElse(null), PageRequest.of(page, size));
+
+        return myProductRepository.findByCategoryId(filter, PageRequest.of(page, size));
+//        List<Product> products = new ArrayList<>();
+//        for (Product product : myProductRepository.findAll()) {
+//            for (Category category : product.getCategories()) {
+//                if (category.getId()==filter){
+//                    products.add(product);
+//                }
+//            }
+//        }
+//        Pageable pageable = PageRequest.of(page, size);
+//        return new PageImpl<>(products, pageable, products.size());
+
+    }
+    public Page<Product> wrapListInPage(List<Product> productList, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        System.out.println(productList);
+        System.out.println(page);
+        System.out.println(size);
+        System.out.println(productList.size());
+        return new PageImpl<>(productList, pageable, productList.size());
     }
     public Product save(ProductDTO productDTO) {
         System.out.println("mcategory service "+productDTO.toString());

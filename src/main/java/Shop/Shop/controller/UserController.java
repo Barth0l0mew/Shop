@@ -1,10 +1,12 @@
 package Shop.Shop.controller;
 
 import Shop.Shop.dto.UserDTO;
+import Shop.Shop.model.Product;
 import Shop.Shop.model.Role;
 import Shop.Shop.model.User;
 import Shop.Shop.service.MyUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -27,12 +29,19 @@ public class UserController {
         return "admin/index.html";
     }
 
-    @GetMapping("/userslist")
-    public String showUserList(Model model) {
-        model.addAttribute("page", "userlist");
-        model.addAttribute("users", myUserService.findAll());
-        return "admin/index";
-    }
+//    @GetMapping("/userslist")
+//    public String showUserList(Model model) {
+//        model.addAttribute("page", "userlist");
+//        model.addAttribute("users", myUserService.findAll());
+//        return "admin/index";
+//    }
+@GetMapping("/userslist")
+public String listProducts(@RequestParam(defaultValue = "0") int page, Model model) {
+    model.addAttribute("page","userlist");
+    Page<User> productPage = myUserService.findPaginated(page, 10); // 10 пользователей на странице
+    model.addAttribute("users", productPage);
+    return "admin/index";
+}
 
     @PostMapping("/editUser")
     public String editUser(@RequestParam(name = "id") Long id, Model model) {

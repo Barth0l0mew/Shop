@@ -33,7 +33,7 @@ public class ProductController {
     @GetMapping("/product/productlist")
     public String listProducts(@RequestParam(defaultValue = "0") int page, Model model) {
         model.addAttribute("page","productlist");
-        Page<Product> productPage = myProductService.findPaginated(page, 3); // 10 продуктов на странице
+        Page<Product> productPage = myProductService.findPaginated(page, 10); // 10 продуктов на странице
         model.addAttribute("productlist", productPage);
         return "admin/index"; // возвращает имя шаблона
     }

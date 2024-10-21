@@ -9,6 +9,8 @@ import Shop.Shop.model.Role;
 import Shop.Shop.model.User;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +45,9 @@ public class MyUserService {
     public User findByUser(String username) {
         Optional<User> user = myUserRepository.findByUsername(username);
         return user.orElse(null);
+    }
+    public Page<User> findPaginated(int page, int size) {
+        return myUserRepository.findAll(PageRequest.of(page, size));
     }
    public User findByUsernameAndPassword(String username, String password) {
        System.out.println("==find by username "+username);

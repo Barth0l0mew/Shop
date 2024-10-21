@@ -20,7 +20,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="category : ${categories}">
+            <tr th:each="category : ${categories.content}">
                 <td th:text="${category.id}"></td>
                 <td th:text="${category.title}"></td>
                 <td>
@@ -36,6 +36,28 @@
             </tr>
             </tbody>
         </table>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li class="page-item" th:if="(${categories.number}-1)>=0" th:class="${categories.hasPrevious()} ? '' : 'disabled'">
+                    <a class="page-link" th:href="@{/admin/categorylist(page=${categories.number - 1})}">Назад</a>
+                    <!--                <a class="page-link" th:href="@{${'productlist2?page=${productPage.number - 1})'}}">Назад</a>-->
+                </li>
+                <li class="page-item" th:if="${categories.hasPrevious()}">
+                    <a class="page-link" th:href="@{${'categorylist?page=0'}}">В начало</a>
+                </li>
+                <!--            <li class="page-item disabled"><span class="page-link">...</span></li>-->
+                <li class="page-item" th:each="i : ${#numbers.sequence(categories.number - 1, categories.number + 1)}"
+                    th:if="${i >= 0 && i < categories.totalPages}">
+                    <a class="page-link" th:href="@{${'categorylist?page=' + i }}" th:text="${i + 1}"></a>
+                </li>
+                <li class="page-item" th:if="${categories.hasNext()}">
+                    <a class="page-link" th:href="@{${'categorylist?page=' + (categories.number + 1) }}">Вперед</a>
+                </li>
+                <li class="page-item" th:if="${categories.hasNext()}">
+                    <a class="page-link" th:href="@{${'categorylist?page=' + (categories.totalPages - 1) }}">В конец</a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </body>
 </html>

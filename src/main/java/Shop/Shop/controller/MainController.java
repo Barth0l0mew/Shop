@@ -1,14 +1,14 @@
 package Shop.Shop.controller;
 
 import Shop.Shop.dto.UserDTO;
-import Shop.Shop.model.Basket;
-import Shop.Shop.model.Email;
-import Shop.Shop.model.Product;
-import Shop.Shop.model.User;
+import Shop.Shop.model.*;
 import Shop.Shop.service.*;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -39,7 +39,7 @@ public class MainController {
     private EmailService emailService;
 
     @GetMapping({"","/","index"})
-       public String index(Model model, @AuthenticationPrincipal UserDetails userDetails) {
+       public String index(@RequestParam(defaultValue = "0") int page, Model model, @AuthenticationPrincipal UserDetails userDetails) {
 
         if (userDetails!=null) {
             System.out.println("UserDEtails ===== "+userDetails.getUsername());
@@ -52,11 +52,20 @@ public class MainController {
 
       //  System.out.println((UserDetails)authentication.getPrincipal());
         model.addAttribute("categories", myCategoryService.findAll());
-        model.addAttribute("products", myProductService.getMyProducts());
+        Page<Product> productPage = myProductService.findPaginated(page, 8);
+        //model.addAttribute("products", myProductService.getMyProducts());
+        model.addAttribute("products", productPage);
         return "layout";
     }
+    @GetMapping("/product/productlist")
+    public String listProducts(@RequestParam(defaultValue = "0") int page, Model model) {
+        model.addAttribute("page","productlist");
+        Page<Product> productPage = myProductService.findPaginated(page, 8); // 10 продуктов на странице
+        model.addAttribute("productlist", productPage);
+        return "admin/index"; // возвращает имя шаблона
+    }
     @GetMapping("/filter")
-    public String productFilter(@RequestParam(name= "filter") Long filter,  Model model, @AuthenticationPrincipal UserDetails userDetails) {
+    public String productFilter(@RequestParam(name= "filter") Long filter, @RequestParam(defaultValue = "0", name="page") int page,  Model model, @AuthenticationPrincipal UserDetails userDetails) {
         if (userDetails!=null) {
             System.out.println("UserDEtails ===== "+userDetails.getUsername());
             model.addAttribute("CartLink", true);
@@ -65,8 +74,21 @@ public class MainController {
         {
             model.addAttribute("CartLink", false);
         }
+        System.out.println("filter "+filter+ " page "+page);
         model.addAttribute("categories", myCategoryService.findAll());
-        model.addAttribute("products", myProductService.findByCategory(filter));
+        //myProductService.findByCategory(filter)
+        //Page<Product> productPage = myProductService.wrapListInPage(myProductService.findByCategory(filter), page, 2);
+        // model.addAttribute("products", myProductService.findByCategory(filter));
+       // Page<Product> products =  new PageImpl<Product>(productPage.getContent(), PageRequest.of(page, 2), productPage.getTotalElements());
+        Category category = myCategoryService.findById(filter);
+        Page<Product> productPage = myProductService.findPaginatedByCategory(filter, page, 8);
+
+        System.out.println(productPage.getContent());
+        System.out.println("total "+productPage.getTotalElements());
+        System.out.println("Totale page "+productPage.getTotalPages());
+        System.out.println("NUmber "+productPage.getNumber());
+        model.addAttribute("filter", filter);
+        model.addAttribute("products", productPage);
         return "layout";
     }
 

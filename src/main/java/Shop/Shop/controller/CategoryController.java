@@ -3,9 +3,11 @@ package Shop.Shop.controller;
 import Shop.Shop.dto.CategoryDTO;
 import Shop.Shop.dto.UserDTO;
 import Shop.Shop.model.Category;
+import Shop.Shop.model.Product;
 import Shop.Shop.model.User;
 import Shop.Shop.service.MyCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,13 +18,20 @@ public class CategoryController {
     @Autowired
     public MyCategoryService myCategoryService;
 
-    @GetMapping ("/categorylist")
-    public String categoryList(Model model){
-        model.addAttribute("page","categorylist");
-        System.out.println("====controller ==="+myCategoryService.findAll());
-        model.addAttribute("categories", myCategoryService.findAll() );
-        return "admin/index";
-    }
+//    @GetMapping ("/categorylist")
+//    public String categoryList(Model model){
+//        model.addAttribute("page","categorylist");
+//        System.out.println("====controller ==="+myCategoryService.findAll());
+//        model.addAttribute("categories", myCategoryService.findAll() );
+//        return "admin/index";
+//    }
+@GetMapping("/categorylist")
+public String listCategory(@RequestParam(defaultValue = "0") int page, Model model) {
+    model.addAttribute("page","categorylist");
+    Page<Category> productPage = myCategoryService.findPaginated(page, 10); // 10 категорий на странице
+    model.addAttribute("categories", productPage);
+    return "admin/index"; // возвращает имя шаблона
+}
     @GetMapping("/addCategory")
     public String showRegistrationForm(Model model) {
         model.addAttribute("page", "addcategory");

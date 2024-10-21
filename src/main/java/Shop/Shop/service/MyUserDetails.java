@@ -1,10 +1,12 @@
 package Shop.Shop.service;
 
+import Shop.Shop.model.Role;
 import Shop.Shop.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -17,9 +19,17 @@ public class MyUserDetails implements UserDetails {
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.stream(user.getRole().name().split(", "))
+        System.out.println("getAuthorities  "+Arrays.stream(user.getRole().name().split(", "))
                 .map(SimpleGrantedAuthority::new)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
+        List<GrantedAuthority> authorities = new ArrayList<>();
+
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRole().name()));
+        System.out.println(authorities);
+//        return Arrays.stream(user.getRole().name().split(", "))
+//                .map(SimpleGrantedAuthority::new)
+//                .collect(Collectors.toList());
+        return authorities;
     }
 
     @Override

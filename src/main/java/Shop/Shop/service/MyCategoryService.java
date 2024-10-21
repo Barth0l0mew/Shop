@@ -10,6 +10,8 @@ import Shop.Shop.model.Role;
 import Shop.Shop.model.User;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,6 +29,9 @@ public class MyCategoryService {
     }
     public Category findById(Long id) {
         return myCategoryRepository.findById(id).orElse(null);
+    }
+    public Page<Category> findPaginated(int page, int size) {
+        return myCategoryRepository.findAll(PageRequest.of(page, size));
     }
     public Category save(CategoryDTO categoryDTO) {
         System.out.println("mcategory service "+categoryDTO.toString());

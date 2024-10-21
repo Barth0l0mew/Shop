@@ -11,6 +11,8 @@ import Shop.Shop.model.Status;
 import Shop.Shop.model.User;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -34,6 +36,9 @@ public class MyOrderService {
     }
     public Order findById(Long id) {
         return myOrderRepository.findById(id).orElse(null);
+    }
+    public Page<Order> findPaginated(int page, int size) {
+        return myOrderRepository.findAll(PageRequest.of(page, size));
     }
 
     public Order save(User user) {

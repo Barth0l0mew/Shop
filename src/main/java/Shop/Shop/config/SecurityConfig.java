@@ -4,6 +4,7 @@ package Shop.Shop.config;
 import Shop.Shop.service.MyUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
@@ -16,6 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
         import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 
 @Configuration
 @EnableWebSecurity
@@ -41,8 +43,8 @@ public class SecurityConfig {
     }
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.csrf(AbstractHttpConfigurer::disable)
-
+        return http
+                .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth->auth
                         .requestMatchers("/",
                                 "/index",
@@ -55,6 +57,13 @@ public class SecurityConfig {
                                 "/uploaded/**",
                                 "/product"
                                 ).permitAll()
+                        .requestMatchers("/static/css/uploaded/**",
+                                "/static/uploaded/**",
+                                "/uploaded/**","/buy/**",
+                                "/buy/product",
+                                "/basket","/deleteproduct","/order",
+                                "/send").hasRole("USER")
+
                         .requestMatchers("/admin/**",
                                 "admin/editUser",
                                 "/admin/product/**",
@@ -68,7 +77,10 @@ public class SecurityConfig {
                                 "/basket",
                                 "/deleteproduct",
                                 "/order",
-                                "/send").authenticated())
+                                "/send")
+                        .hasRole("ADMIN")
+                        .anyRequest()
+                        .authenticated())
                 //.formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
                 .formLogin(form->form
                         .loginPage("/login")
@@ -76,6 +88,10 @@ public class SecurityConfig {
                         .permitAll())
                 .httpBasic(Customizer.withDefaults())
                 .headers(headers->headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
+                .exceptionHandling( exceptionHandling-> exceptionHandling
+                        .accessDeniedHandler((request, response, accessDeniedException) -> accessDeniedException.printStackTrace())
+                        .accessDeniedPage("/index"))
+
                 .build();
 
     }
