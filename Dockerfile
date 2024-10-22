@@ -1,4 +1,4 @@
 FROM openjdk:22-jdk
-COPY --from=build /target/Shop-0.0.1-SNAPSHOT.jar Shop.jar
+COPY /target/*.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","Shop.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
