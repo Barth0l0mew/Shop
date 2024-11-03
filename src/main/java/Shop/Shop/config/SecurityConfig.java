@@ -62,8 +62,9 @@ public class SecurityConfig {
                                 "/uploaded/**","/buy/**",
                                 "/buy/product",
                                 "/basket","/deleteproduct","/order",
-                                "/send").hasRole("USER")
-
+                                "/send")
+                        //.hasRole("USER")
+                        .hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/admin/**",
                                 "admin/editUser",
                                 "/admin/product/**",
@@ -85,6 +86,11 @@ public class SecurityConfig {
                 .formLogin(form->form
                         .loginPage("/login")
                         .loginProcessingUrl("/log")
+                        .defaultSuccessUrl("/index")
+                        .permitAll())
+                .logout(logout->logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/index")
                         .permitAll())
                 .httpBasic(Customizer.withDefaults())
                 .headers(headers->headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))

@@ -1,8 +1,35 @@
-FROM jelastic/maven:3.9.4-openjdk-22.ea-b17
-COPY ./src src/
-COPY ./pom.xml pom.xml
-RUN mvn clean packege -DskipTests
-FROM openjdk:22-jdk
-COPY --from=build  target/Shop-0.0.1-SNAPSHOT.jar app.jar
+# Используйте официальный образ OpenJDK 21 как базовый
+FROM openjdk:22-jdk-slim as build
+
+# Установите рабочую директорию
+WORKDIR /Shop
+
+# Скопируйте файл сборки (например, pom.xml или build.gradle) в текущую директорию
+COPY pom.xml .
+
+COPY mvnw ./
+COPY .mvn ./.mvn
+RUN chmod +x mvnw
+# Скачиваем зависимости (первый шаг сборки)
+RUN ./mvnw dependency:go-offline
+
+# Копируем остальные файлы проекта
+COPY src ./src
+
+# Собрать приложение
+RUN ./mvnw package -DskipTests
+
+# Переключаемся на меньший образ для запуска
+FROM openjdk:22-jdk-slim
+
+# Установите рабочую директорию для приложения
+WORKDIR /Shop
+
+# Скопируйте jar файл из образа сборки
+COPY --from=build /Shop/target/*.jar app.jar
+
+# Укажите команду для запуска приложения
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
+# Укажите порт, который ваше приложение будет использовать
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","app.jar"]
