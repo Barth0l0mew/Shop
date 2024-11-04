@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  shop-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - db_data:/Shop/data # Монтируем Docker volume для хранения данных H2
+    ports:
+      - "8080:8080" # Публикуем порт для доступа к приложению
+
+volumes:
+  db_data: # Определяем том для использования
