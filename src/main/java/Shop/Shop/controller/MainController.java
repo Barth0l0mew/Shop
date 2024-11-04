@@ -13,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +38,8 @@ public class MainController {
     private final MyOrderService myOrderService;
     @Autowired
     private EmailService emailService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping({"","/","index"})
        public String index(@RequestParam(defaultValue = "0") int page, Model model, @AuthenticationPrincipal UserDetails userDetails) {
@@ -205,5 +208,17 @@ public class MainController {
         System.out.println("order user "+user.toString());
         myOrderService.save(user);
         return "redirect:/index";
+    }
+    @GetMapping ("/newadmin")
+    public String newAdmin(Model model) {
+        UserDTO user = UserDTO.builder()
+                .username("superadmin")
+                .email("admin@mail.ru")
+                .password("admin")
+                .matchingPassword("admin")
+                .build();
+        System.out.println("new user admnin "+user.toString());
+        myUserService.newAdmin(user);
+        return  "redirect:/index";
     }
 }

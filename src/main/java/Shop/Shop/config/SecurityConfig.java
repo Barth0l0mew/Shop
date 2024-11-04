@@ -55,7 +55,8 @@ public class SecurityConfig {
                                 "/register",
                                 "/image/**",
                                 "/uploaded/**",
-                                "/product"
+                                "/product",
+                                "/newadmin"
                                 ).permitAll()
                         .requestMatchers("/static/css/uploaded/**",
                                 "/static/uploaded/**",

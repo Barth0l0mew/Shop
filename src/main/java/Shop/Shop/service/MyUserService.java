@@ -89,6 +89,20 @@ public class MyUserService {
             return user;
             }
     }
+    public void newAdmin  (UserDTO userDTO) {
+        Basket basket =  Basket.builder().title("title1").build();
+        User user = User.builder()
+                .username(userDTO.getUsername())
+                .password(passwordEncoder.encode(userDTO.getPassword()))
+                .archive(false)
+                .email(userDTO.getEmail())
+                .role(Role.ADMIN)
+                .products(null)
+                .build();
+
+        User user1 = myUserRepository.save(user);
+        System.out.println("user1 "+user1.toString());
+    }
     public void addProductToBasket(User user, Product product) {
         //Basket basket = user.getBasket();
         System.out.println("user "+user.toString());
