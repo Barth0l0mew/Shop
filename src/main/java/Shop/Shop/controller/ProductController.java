@@ -15,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 @Controller
 @RequestMapping("/admin")
@@ -54,6 +56,16 @@ public class ProductController {
         if (!fileName.equals("")){
 
             File uploadedDirectory = new File("src/main/resources/static/uploaded/");
+            Path path = uploadedDirectory.toPath();
+            System.out.println("path "+path);
+            if (!Files.exists(path)) {
+                System.out.println("files not exist");
+                try {
+                    Files.createDirectories(path);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
             System.out.println(uploadedDirectory);
             try {
                     file.transferTo(new File(uploadedDirectory.getAbsolutePath() + "/" + fileName));

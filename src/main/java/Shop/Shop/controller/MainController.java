@@ -18,7 +18,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -58,6 +62,8 @@ public class MainController {
         Page<Product> productPage = myProductService.findPaginated(page, 8);
         //model.addAttribute("products", myProductService.getMyProducts());
         model.addAttribute("products", productPage);
+
+
         return "layout";
     }
     @GetMapping("/product/productlist")
