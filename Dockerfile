@@ -23,7 +23,7 @@ RUN ./mvnw package -DskipTests
 # Переключаемся на меньший образ для запуска
 FROM openjdk:22-jdk-slim
 # Укажите путь, где H2 база данных будет храниться внутри контейнера
-VOLUME /app/data
+VOLUME /Shop/data
 # Установите рабочую директорию для приложения
 WORKDIR /Shop
 
