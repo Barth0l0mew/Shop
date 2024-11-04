@@ -59,7 +59,7 @@ public class ProductController {
             Path path = uploadedDirectory.toPath();
             System.out.println("path "+path);
             if (!Files.exists(path)) {
-                System.out.println("files not exist");
+                System.out.println("files not exist ");
                 try {
                     Files.createDirectories(path);
                 } catch (IOException e) {
